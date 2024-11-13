@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://bckqk3fqmkn8b"]
+
+[ext_resource type="Script" path="res://Entities/Player/tail.gd" id="1_iuhnu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bt3m7"]
+radius = 2.23607
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x3f40"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uadws"]
+radius = 3.16228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lyb4j"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gy7oe"]
+radius = 11.0
+
+[node name="Tail" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_iuhnu")
+
+[node name="TailBegin" type="StaticBody2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailBegin"]
+shape = SubResource("CircleShape2D_bt3m7")
+debug_color = Color(0, 1, 0.0999999, 0.419608)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../TailBegin")
+node_b = NodePath("../TailMid1")
+bias = 0.9
+disable_collision = false
+angular_limit_enabled = true
+
+[node name="TailMid1" type="RigidBody2D" parent="."]
+position = Vector2(6, 0)
+collision_layer = 128
+collision_mask = 128
+physics_material_override = SubResource("PhysicsMaterial_x3f40")
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp_mode = 1
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailMid1"]
+shape = SubResource("CircleShape2D_uadws")
+debug_color = Color(0, 0.5, 1, 0.419608)
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(6, 0)
+node_a = NodePath("../TailMid1")
+node_b = NodePath("../TailMid2")
+bias = 0.9
+disable_collision = false
+softness = 1.0
+angular_limit_enabled = true
+angular_limit_lower = -0.174533
+angular_limit_upper = 0.174533
+
+[node name="TailMid2" type="RigidBody2D" parent="."]
+position = Vector2(18, 0)
+collision_layer = 128
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_x3f40")
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp_mode = 1
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailMid2"]
+shape = SubResource("CircleShape2D_lyb4j")
+debug_color = Color(0, 1, 0.916667, 0.419608)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(18, 0)
+node_a = NodePath("../TailMid2")
+node_b = NodePath("../TailEnd")
+bias = 0.9
+disable_collision = false
+softness = 1.0
+angular_limit_enabled = true
+angular_limit_lower = -0.174533
+angular_limit_upper = 0.174533
+
+[node name="TailEnd" type="RigidBody2D" parent="."]
+position = Vector2(37, 0)
+collision_layer = 128
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_x3f40")
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp_mode = 1
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailEnd"]
+shape = SubResource("CircleShape2D_gy7oe")
+debug_color = Color(0, 0.116667, 1, 0.419608)

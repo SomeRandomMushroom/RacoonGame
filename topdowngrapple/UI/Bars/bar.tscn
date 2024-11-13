@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg18po2rt30op"]
+
+[ext_resource type="Script" path="res://UI/Bars/bar.gd" id="1_s7j34"]
+
+[node name="Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_s7j34")
+
+[node name="Max" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 8.0
+
+[node name="Current" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 8.0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjx4sns58cxf5"]
+
+[ext_resource type="Script" path="res://effects/burst/default_burst_particle.gd" id="1_bfpik"]
+
+[node name="DefaultBurstParticle" type="CPUParticles2D"]
+emitting = false
+amount = 12
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.92
+randomness = 0.57
+lifetime_randomness = 0.6
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 250.0
+initial_velocity_max = 400.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+script = ExtResource("1_bfpik")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

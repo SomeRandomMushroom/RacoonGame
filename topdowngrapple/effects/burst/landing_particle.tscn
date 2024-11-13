@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbqdr7i3h8a6c"]
+
+[ext_resource type="Script" path="res://effects/burst/default_burst_particle.gd" id="1_38t0s"]
+
+[node name="DefaultBurstParticle" type="CPUParticles2D"]
+emitting = false
+amount = 12
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.92
+randomness = 0.57
+lifetime_randomness = 0.6
+emission_shape = 5
+emission_points = PackedVector2Array(-16, 1, 16, 1)
+emission_normals = PackedVector2Array(-1, -0.5, 1, -0.5)
+emission_colors = PackedColorArray()
+spread = 40.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+script = ExtResource("1_38t0s")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

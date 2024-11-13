@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccijhdkj7ghbo"]
+
+[ext_resource type="Script" path="res://effects/pause_timer.gd" id="1_2x84b"]
+
+[node name="PauseTimer" type="Timer"]
+process_mode = 2
+script = ExtResource("1_2x84b")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

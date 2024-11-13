@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwe2a3kqct07l"]
+
+[ext_resource type="PackedScene" uid="uid://ca0ltxiefn77p" path="res://Entities/Player/player.tscn" id="1_4x1qd"]
+[ext_resource type="PackedScene" uid="uid://dk5vffsyvnfyd" path="res://Entities/enemies/enemy.tscn" id="2_j66jb"]
+[ext_resource type="PackedScene" uid="uid://dgbdkwb1nhex4" path="res://Entities/tools/cursor/cursor.tscn" id="3_mqpvd"]
+
+[node name="mason level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_4x1qd")]
+position = Vector2(368, 256)
+
+[node name="Enemy" parent="." instance=ExtResource("2_j66jb")]
+position = Vector2(96, 208)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_j66jb")]
+position = Vector2(712, 160)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_j66jb")]
+position = Vector2(568, 472)
+
+[node name="Cursor" parent="." instance=ExtResource("3_mqpvd")]
+position = Vector2(-40, 168)
