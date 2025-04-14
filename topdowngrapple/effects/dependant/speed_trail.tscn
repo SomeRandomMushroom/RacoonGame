@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b76wjrrnd8tfk"]
+
+[ext_resource type="Script" path="res://effects/burst/tiremark.gd" id="1_j1hfw"]
+
+[sub_resource type="Curve" id="Curve_7foca"]
+_data = [Vector2(0, 0.587149), 0.0, 0.0, 0, 0, Vector2(0.490975, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_7ncer"]
+colors = PackedColorArray(0.48, 0.774667, 1, 0, 0.32, 0.705333, 1, 0.741176)
+
+[node name="SpeedTrail" type="Line2D"]
+width = 55.0
+width_curve = SubResource("Curve_7foca")
+gradient = SubResource("Gradient_7ncer")
+joint_mode = 1
+begin_cap_mode = 2
+script = ExtResource("1_j1hfw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

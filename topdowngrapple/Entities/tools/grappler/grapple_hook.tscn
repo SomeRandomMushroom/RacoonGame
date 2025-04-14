@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://e8h0a45aq3l1"]
 
-[ext_resource type="Script" path="res://Entities/tools/grappler/grapple_hook.gd" id="1_d4fqj"]
+[ext_resource type="Script" uid="uid://nj33k158a2pw" path="res://Entities/tools/grappler/grapple_hook.gd" id="1_d4fqj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gksue"]
 radius = 8.0
 
 [node name="GrappleHook" type="Area2D"]
+z_index = 1
+z_as_relative = false
 collision_layer = 0
 collision_mask = 9
 script = ExtResource("1_d4fqj")
@@ -14,7 +16,8 @@ script = ExtResource("1_d4fqj")
 shape = SubResource("CircleShape2D_gksue")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-4, -4, 8, 0, -4, 4, 0, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-10.7354, -10.7354, 21.4707, 0, -10.7354, 10.7354, 0, 0)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(300, 0)

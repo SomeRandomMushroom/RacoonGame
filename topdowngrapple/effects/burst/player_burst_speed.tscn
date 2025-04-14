@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5jp8k54rv7vn"]
+
+[ext_resource type="Script" uid="uid://d0qwpchhydsab" path="res://effects/burst/default_burst_particle.gd" id="1_kbbh0"]
+
+[sub_resource type="Curve" id="Curve_ju5if"]
+_limits = [0.0, 25.0, 0.0, 1.0]
+_data = [Vector2(0, 15.6201), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0uou1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Gradient" id="Gradient_n3b6w"]
+offsets = PackedFloat32Array(0.607595, 1)
+colors = PackedColorArray(0.62, 0.62, 0.62, 0.501961, 1, 1, 1, 0)
+
+[node name="PlayerBurstSpeed" type="CPUParticles2D"]
+emitting = false
+amount = 10
+lifetime = 1.5
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.9
+lifetime_randomness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 64)
+direction = Vector2(-1, 0)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+split_scale = true
+scale_curve_x = SubResource("Curve_ju5if")
+scale_curve_y = SubResource("Curve_0uou1")
+color_ramp = SubResource("Gradient_n3b6w")
+script = ExtResource("1_kbbh0")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhwt75qhmmmou"]
 
-[ext_resource type="Script" path="res://effects/dependant/speed_particle.gd" id="1_g6hn6"]
+[ext_resource type="Script" uid="uid://d1qp614gtd7kr" path="res://effects/dependant/speed_particle.gd" id="1_g6hn6"]
 
 [sub_resource type="Curve" id="Curve_t46lh"]
 _data = [Vector2(0, 0.296703), 0.0, 0.257386, 0, 0, Vector2(0.870787, 1), 2.89154, 2.89154, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -17,6 +17,7 @@ amount = 2
 one_shot = true
 explosiveness = 0.9
 lifetime_randomness = 1.0
+local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(5, 20)
 direction = Vector2(-1, 0)

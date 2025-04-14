@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4i3rvbkxfmn7"]
+
+[ext_resource type="Script" path="res://effects/burst/tiremark.gd" id="1_q70sf"]
+
+[sub_resource type="Curve" id="Curve_vfuwb"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Gradient" id="Gradient_kxj4o"]
+offsets = PackedFloat32Array(0, 0.248945, 0.721519, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.780392, 0, 0, 0, 0.780392, 0, 0, 0, 0)
+
+[node name="TireMark" type="Line2D"]
+width_curve = SubResource("Curve_vfuwb")
+gradient = SubResource("Gradient_kxj4o")
+joint_mode = 1
+begin_cap_mode = 1
+script = ExtResource("1_q70sf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk5vffsyvnfyd"]
+[gd_scene load_steps=8 format=3 uid="uid://dk5vffsyvnfyd"]
 
-[ext_resource type="Script" path="res://Entities/enemies/enemy.gd" id="1_j0mn5"]
+[ext_resource type="Script" uid="uid://cdh5bcg2ubmvy" path="res://Entities/enemies/enemy.gd" id="1_j0mn5"]
 [ext_resource type="PackedScene" uid="uid://cjsbj2qp2hca2" path="res://Entities/tools/draw_layer.tscn" id="2_i21vs"]
+[ext_resource type="PackedScene" uid="uid://chcqgu1uyictc" path="res://Entities/enemies/hat_healthbar.tscn" id="3_u1ehj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5dw8k"]
 radius = 24.0
@@ -17,36 +18,31 @@ size = Vector2(52, 52)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_j0mn5")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 10.0
-target_desired_distance = 5.0
+[node name="Visible" type="Node2D" parent="."]
 
-[node name="Status" type="Node2D" parent="."]
+[node name="DrawLayer" parent="Visible" instance=ExtResource("2_i21vs")]
 
-[node name="MaxHealth" type="ColorRect" parent="Status"]
-offset_left = -22.0
-offset_top = -38.0
-offset_right = 22.0
-offset_bottom = -34.0
-color = Color(1, 0, 0, 1)
+[node name="HatHealthbar" parent="Visible/DrawLayer" instance=ExtResource("3_u1ehj")]
+position = Vector2(0, -32)
 
-[node name="Health" type="ColorRect" parent="Status"]
-offset_left = -22.0
-offset_top = -38.0
-offset_right = 22.0
-offset_bottom = -34.0
-color = Color(0, 1, 0.233333, 1)
-
-[node name="DrawLayer" parent="." instance=ExtResource("2_i21vs")]
-
-[node name="ColorRect" type="ColorRect" parent="DrawLayer"]
+[node name="ColorRect" type="ColorRect" parent="Visible/DrawLayer"]
 offset_left = -24.0
 offset_top = -24.0
 offset_right = 24.0
 offset_bottom = 24.0
 color = Color(1, 0, 0, 1)
+
+[node name="Shadow" type="Polygon2D" parent="Visible"]
+position = Vector2(0, 8)
+color = Color(0.15, 0.15, 0.15, 1)
+polygon = PackedVector2Array(0, 21, -13, 19, -24, 16, -13, 13, 0, 11, 13, 13, 24, 16, 13, 19)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5dw8k")
@@ -73,5 +69,10 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_2ihjm")
 debug_color = Color(0.68126, 0.69, 0.1656, 0.419608)
 
+[node name="NavigationUpdate" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
 [connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="NavigationUpdate" to="." method="_on_navigation_update_timeout"]

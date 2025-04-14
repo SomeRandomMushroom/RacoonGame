@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://chcqgu1uyictc"]
+
+[ext_resource type="Script" path="res://Entities/enemies/hat_healthbar.gd" id="1_tbpns"]
+
+[node name="HatHealthbar" type="Node2D"]
+script = ExtResource("1_tbpns")
+
+[node name="Height" type="ColorRect" parent="."]
+use_parent_material = true
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 24.0
+scale = Vector2(1, -1)
+color = Color(0.14, 0.14, 0.14, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Base" type="ColorRect" parent="."]
+use_parent_material = true
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 8.0
+color = Color(0.09, 0.09, 0.09, 1)
+metadata/_edit_use_anchors_ = true

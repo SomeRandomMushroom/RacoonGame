@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cipnf6knrxppa"]
+
+[ext_resource type="Script" uid="uid://d0qwpchhydsab" path="res://effects/burst/default_burst_particle.gd" id="1_2d1mq"]
+
+[sub_resource type="Curve" id="Curve_wxtv5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_pmb85"]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Gradient" id="Gradient_4dfsw"]
+offsets = PackedFloat32Array(0.662447, 1)
+colors = PackedColorArray(0.160784, 0.160784, 0.160784, 1, 1, 1, 1, 0)
+
+[node name="Hat Break" type="CPUParticles2D"]
+emitting = false
+amount = 1
+one_shot = true
+local_coords = true
+direction = Vector2(0, -1)
+spread = 30.0
+initial_velocity_min = 200.0
+initial_velocity_max = 350.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+scale_amount_min = 16.0
+scale_amount_max = 16.0
+split_scale = true
+scale_curve_x = SubResource("Curve_wxtv5")
+scale_curve_y = SubResource("Curve_pmb85")
+color = Color(0.16, 0.16, 0.16, 1)
+color_ramp = SubResource("Gradient_4dfsw")
+script = ExtResource("1_2d1mq")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

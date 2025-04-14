@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq2bvxx4uwj36"]
+
+[ext_resource type="Script" path="res://effects/burst/default_burst_particle.gd" id="1_ass7o"]
+
+[sub_resource type="Curve" id="Curve_keijt"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.109434, 1.02652), 0.0, 0.0, 0, 0, Vector2(1, 0.452418), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_jeotj"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 30.0312), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_xfsa8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.781132, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="LandShockwaveEffect" type="CPUParticles2D"]
+emitting = false
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+randomness = 0.4
+lifetime_randomness = 0.2
+direction = Vector2(1, -0.2)
+spread = 20.0
+gravity = Vector2(0, 70)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = 20.0
+angular_velocity_max = 200.0
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.4
+orbit_velocity_curve = SubResource("Curve_keijt")
+damping_min = 5.0
+damping_max = 5.0
+damping_curve = SubResource("Curve_jeotj")
+scale_amount_min = 8.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_xfsa8")
+script = ExtResource("1_ass7o")

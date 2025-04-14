@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgbdkwb1nhex4"]
 
-[ext_resource type="Script" path="res://Entities/tools/cursor/cursor.gd" id="1_wck0l"]
+[ext_resource type="Script" uid="uid://df0r7tq8tn66o" path="res://Entities/tools/cursor/cursor.gd" id="1_wck0l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fibv8"]
 radius = 56.0803
@@ -16,16 +16,16 @@ offset_bottom = 3.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -1.0
+offset_left = -3.0
 offset_top = -20.0
-offset_right = 1.0
+offset_right = 3.0
 offset_bottom = 20.0
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 offset_left = -20.0
-offset_top = 1.0
-offset_right = -18.0
-offset_bottom = 41.0
+offset_top = 3.0
+offset_right = -13.0
+offset_bottom = 43.0
 rotation = -1.5708
 
 [node name="Clickbox" type="Area2D" parent="."]

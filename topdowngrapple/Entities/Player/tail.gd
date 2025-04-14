@@ -9,7 +9,7 @@ var d_ang_lim=-10
 var u_ang_lim=10
 var current_dir=1
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	Global.player.edit_tail_line(0, begin.position)
 
 func _physics_process(delta: float):

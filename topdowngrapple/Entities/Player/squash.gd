@@ -20,5 +20,5 @@ func burst_deform(dir):
 	tween.tween_property(material, "shader_parameter/deformation",
 		deformationScale, duration).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(material, "shader_parameter/deformation",
-		Vector2.ZERO, duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		Vector2.ZERO, duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.play()

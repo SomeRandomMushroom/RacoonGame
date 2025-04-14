@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://crd5udfaxsy3r"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+use_parent_material = true
