@@ -5,8 +5,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_42tyu"]
 radius = 72.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ks33v"]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42tyu"]
+size = Vector2(32, 24)
 
 [node name="WheelSwitch" type="Node2D" groups=["object"]]
 script = ExtResource("1_42tyu")
@@ -25,6 +25,7 @@ scale = Vector2(1, 0.6)
 
 [node name="rotator" type="Node2D" parent="scaler"]
 position = Vector2(0, -26.6667)
+rotation = 0.296706
 
 [node name="ColorRect2" type="ColorRect" parent="scaler/rotator"]
 offset_left = -40.0
@@ -68,8 +69,8 @@ metadata/type = "wheel_switch"
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_42tyu")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_ks33v")
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_42tyu")

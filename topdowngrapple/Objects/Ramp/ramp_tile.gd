@@ -5,6 +5,7 @@ extends Node2D
 var slope=0
 var connected_obj={}
 
+
 func _ready() -> void:
 	slope=slope_vector.y/slope_vector.x
 

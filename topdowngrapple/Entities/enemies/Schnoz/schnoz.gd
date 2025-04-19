@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var health=$Visible/DrawLayer/HatHealthbar
 @onready var navigator=$NavigationAgent2D
 @onready var animator=$AnimationTree
-@export var weight=.9
+@export var weight=400
 @export var MAXMOVESPEED=800
 @export var ACCELERATION=1.5
 
@@ -15,7 +15,7 @@ const FRICTION=3
 const LAUNCHSPEED=500.0
 const GRAVITY=.02
 
-var weakened=true
+var weak=true
 var grappled=false
 var mouse_hovering=false
 var launched=false
@@ -46,7 +46,7 @@ func _ready() -> void:
 func _physics_process(og_delta: float) -> void:
 	current_target=navigator.get_next_path_position()
 	delta=og_delta*Global.DELTA_MODIFIER
-	if grappled and weakened:
+	if grappled and weak:
 		set_collision_mask_value(3, false)
 		var gp=Global.player.position
 		if gp.distance_to(position)<gp.distance_to(position+velocity*og_delta):
@@ -105,7 +105,7 @@ func release():
 	grappled=false
 	if velocity.length()>LAUNCHSPEED:
 		launched=true
-		#weakened=false
+		#weak=false
 		set_collision_mask_value(3, false)
 		print('launched')
 	set_collision_mask_value(3, true)

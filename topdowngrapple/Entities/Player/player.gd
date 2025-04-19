@@ -24,6 +24,7 @@ extends CharacterBody2D
 @onready var sprite=$Visible/DrawLayer/Squash/PlayerSprites
 @onready var rippler=$UI/Rippler
 @onready var slow_effect_circle=$UI/SlowEffectCircle
+@onready var gpt=$GrappleTimer
 @onready var tail=load('res://Entities/Player/tail.tscn')
 
 const speed_mod=.65
@@ -40,7 +41,7 @@ const JUMPDELAY=15
 const JUMPSTRENGTH=-4.5
 const STYLEFRAMES=10
 const JUMPDAMPENSPEED=15.0*speed_mod
-const GRAVITY=.018*speed_mod
+const GRAVITY=.025*speed_mod
 const WALLRIDEFRAMES=30
 const MAXFOCUSTIME=15
 const SLIDEANGLE=deg_to_rad(25)
@@ -164,6 +165,7 @@ func movement(input, og_delta):
 			g.call_deferred('setup')
 			grappler=g
 			g.connect('destroyed', empty_grappler)
+			gpt.start()
 	elif Input.is_action_just_released('grapple'):
 		if grappler.attatched_type==grappler.nothing:
 			grappler.destroy(grappler.position.direction_to(position)*throwspeed*delta, 0, .1)# grappler.position.distance_to(position)/(throwspeed*delta))
@@ -194,7 +196,7 @@ func movement(input, og_delta):
 				p.direction=-velocity.normalized()
 				p.position=position
 			#If player is moving away from grappler
-			elif gp.distance_to(position)<gp.distance_to(position+velocity):
+			elif gp.distance_to(position)<gp.distance_to(position+velocity*og_delta):
 				var tangent=gp-position
 				tangent=Vector2(tangent.y, tangent.x).normalized()
 				var calc=Global.loop_pi(abs(position.angle_to_point(gp)-Global.rad_90-velocity.angle()))
@@ -203,17 +205,19 @@ func movement(input, og_delta):
 					calc=Global.loop_pi(abs(calc))
 				if calc<=Global.rad_90:
 					tangent.y*=-1
+					animator.set('parameters/grapple_c/blend_position', gp.direction_to(position))
+					state_machine.travel('grapple_c')
 				else:
 					tangent.x*=-1
 				velocity=velocity.length()*(tangent+position.direction_to(gp)/25).normalized()
-				if grappler.attatched_type==grappler.entity and grappler.attatched_to.weakened:
-					grappler.attatched_to.velocity+=-velocity*(delta/300)
+				if grappler.attatched_type==grappler.entity and grappler.attatched_to.weak:
+					grappler.attatched_to.velocity+=-velocity*(delta/grappler.attatched_to.weight)
 				elif grappler.attatched_type==grappler.object:
 					match grappler.attatched_to.get_meta('type'):
 						'wheel_switch':
 							grappler.attatched_to.set_rotational_force(-angle_difference(gp.angle_to_point(position+velocity*og_delta), gp.angle_to_point(position)))
 						'dumpster':
-							grappler.attatched_to.velocity+=-velocity*(delta/500)
+							grappler.attatched_to.velocity+=-velocity*(delta/600)
 func jumping(input):
 	#wall jumping
 	if jump_buffer>0 and wall_riding:
@@ -235,11 +239,11 @@ func jumping(input):
 			is_air_action=false
 			state=States.MOVING
 			#TODO: make sure this works
-			if z_vel>8 and velocity.length()>ATTACKINGSPEED*1.5:
+			if z_vel>6 and velocity.length()>ATTACKINGSPEED*1.2:
 				var land=land_shockwave.instantiate()
 				add_sibling(land)
 				land.position=position
-				land.size=velocity.length()/ATTACKINGSPEED
+				land.size=velocity.length()/ATTACKINGSPEED*1.2
 				camera.shake(8, .3)
 			z_vel=0
 			state_machine.travel('moving')
@@ -454,8 +458,11 @@ func off_ramp():
 	else:
 		style_jump_frames=STYLEFRAMES
 
-
+#hi there buddy
 func empty_grappler():
+	state_machine.travel('moving')
+	set_grapple_line_origin(Vector2.ZERO)
+	gpt.stop()
 	grappler=null
 	if marking:
 		current_tire_mark.release()
@@ -474,6 +481,10 @@ func squash_and_stretch():
 func die():
 	print('died')
 	death.emit()
+
+
+func set_grapple_line_origin(p:Vector2):
+	line.points[0]=p
 
 
 func _on_obj_collider_area_entered(area: Area2D) -> void:
@@ -514,3 +525,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group('enemy'):
 		ui.damage()
+
+
+func _on_grapple_timer_timeout() -> void:
+	if grappler!=null:
+		grappler.destroy()

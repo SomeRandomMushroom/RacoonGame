@@ -613,29 +613,28 @@ graph_offset = Vector2(0, -9.13275)
 radius = 80.0
 
 [node name="Smimble" type="CharacterBody2D" groups=["enemy"]]
-position = Vector2(0, 64)
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_ye722")
 
 [node name="Visible" type="Node2D" parent="."]
 position = Vector2(0, -64)
 
 [node name="Shadow" type="Polygon2D" parent="Visible"]
-position = Vector2(0, 48)
+position = Vector2(0, 104)
 color = Color(0.15, 0.15, 0.15, 1)
 polygon = PackedVector2Array(0, 21, -13, 19, -24, 16, -13, 13, 0, 11, 13, 13, 24, 16, 13, 19)
 
 [node name="DrawLayer" parent="Visible" instance=ExtResource("2_7arf0")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visible/DrawLayer"]
-position = Vector2(0, -8)
+position = Vector2(0, 48)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_lxv2o")
 animation = &"Attack"
 
 [node name="HatHealthbar" parent="Visible/DrawLayer" instance=ExtResource("3_h77re")]
-position = Vector2(0, -46)
+position = Vector2(0, 10)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
@@ -646,7 +645,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m6iyx")
 
 [node name="GrappleHitbox" type="Area2D" parent="." groups=["enemy"]]
-position = Vector2(0, -72)
+position = Vector2(0, -16)
 collision_layer = 8
 collision_mask = 0
 
@@ -655,7 +654,6 @@ position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_4i5v4")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["enemy", "hitbox"]]
-position = Vector2(0, -56)
 collision_layer = 4
 collision_mask = 5
 
@@ -664,7 +662,6 @@ position = Vector2(0, 32)
 shape = SubResource("CircleShape2D_j7mfs")
 
 [node name="Clickbox" type="Area2D" parent="."]
-position = Vector2(0, -56)
 collision_layer = 16
 collision_mask = 0
 
@@ -693,7 +690,6 @@ parameters/conditions/teleport = false
 parameters/Hurt/blend_position = 0
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["enemy", "hurtbox"]]
-position = Vector2(0, -56)
 monitoring = false
 monitorable = false
 

@@ -7,10 +7,10 @@ extends CharacterBody2D
 @onready var navigator=$NavigationAgent2D
 @onready var animator=$AnimationTree
 @onready var ray=$RayCast2D
-@export var weight=.5
+@export var weight=200
 @export var MAXMOVESPEED=100
 @export var ACCELERATION=1.5
-@export var preferred_distance=100
+@export var preferred_distance=60
 @export var preferred_distance_left_bound=.9
 @export var preferred_distance_right_bound=1.1
 @export var teleport_distance=1000
@@ -19,7 +19,7 @@ const FRICTION=3
 const LAUNCHSPEED=500.0
 const GRAVITY=.02
 
-var weakened=true
+var weak=true
 var grappled=false
 var mouse_hovering=false
 var launched=false
@@ -46,13 +46,14 @@ func _ready() -> void:
 
 
 func _physics_process(og_delta: float) -> void:
+	#TODO: fix this
 	if teleporting:
 		ray.position=Global.player.position-position
-		ray.target_position=Global.player.velocity
+		ray.target_position=Global.player.velocity*.6
 	else:
 		current_target=navigator.get_next_path_position()
 		delta=og_delta*Global.DELTA_MODIFIER
-		if grappled and weakened:
+		if grappled and weak:
 			set_collision_mask_value(3, false)
 			var gp=Global.player.position
 			if gp.distance_to(position)<gp.distance_to(position+velocity*og_delta):
@@ -137,7 +138,11 @@ func stop_floating():
 func teleport():
 	animator.set('parameters/conditions/teleport', false)
 	aggrevated=true
-	position=Global.player.position+Global.player.velocity*.6
+	if ray.is_colliding():
+		position=ray.get_collision_point().move_toward(Global.player.position, 32)
+	else:
+		position=Global.player.position+Global.player.velocity*.6
+	teleporting=false
 	print("teleported to: "+str(position))
 
 
@@ -150,7 +155,7 @@ func release():
 	grappled=false
 	if velocity.length()>LAUNCHSPEED:
 		launched=true
-		#weakened=false
+		#weak=false
 		set_collision_mask_value(3, false)
 		print('launched')
 	set_collision_mask_value(3, true)
@@ -172,7 +177,7 @@ func die():
 
 
 func _on_hitbox_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area.is_in_group('enemy'):
+	if area.is_in_group('enemy') and area.get_parent()!=self:
 		if (grappled or launched) and velocity.length()>LAUNCHSPEED:
 			area.get_parent().damage()
 			damage(floor(velocity.length()/LAUNCHSPEED/50))

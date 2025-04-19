@@ -35,6 +35,14 @@ offset_right = 24.0
 offset_bottom = 24.0
 color = Color(1, 0, 0, 1)
 
+[node name="Label" type="Label" parent="Visible/DrawLayer"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 49.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 50
+text = "The"
+
 [node name="Shadow" type="Polygon2D" parent="Visible"]
 position = Vector2(0, 8)
 color = Color(0.15, 0.15, 0.15, 1)

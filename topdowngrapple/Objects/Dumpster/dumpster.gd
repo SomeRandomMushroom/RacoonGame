@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 				tangent.x*=-1
 			velocity=velocity.length()*tangent
 	velocity=velocity.move_toward(Vector2.ZERO, friction*delta*Global.DELTA_MODIFIER)
-	move_and_collide(velocity*delta)
+	var collision=move_and_collide(velocity*delta)
 
 
 
@@ -41,3 +41,15 @@ func release():
 	if velocity.length()>LAUNCHSPEED:
 		set_collision_mask_value(3, false)
 	set_collision_mask_value(3, true)
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group('object') and area.get_meta('type')=='dumpster' and is_fast():
+		print('hit')
+		var p=area.get_parent()
+		print(p.velocity, ' ', velocity)
+		if p.velocity.length()>velocity.length():
+			p.set_deferred('velocity', p.velocity+velocity)
+			set_deferred('velocity', velocity*-.6)
+		else:
+			p.set_deferred('velocity', p.velocity+velocity)
