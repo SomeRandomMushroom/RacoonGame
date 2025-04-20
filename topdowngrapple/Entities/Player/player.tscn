@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://ca0ltxiefn77p"]
+[gd_scene load_steps=94 format=3 uid="uid://ca0ltxiefn77p"]
 
 [ext_resource type="Script" uid="uid://bw7p3rcdru0ye" path="res://Entities/Player/player.gd" id="1_5ljvg"]
 [ext_resource type="PackedScene" uid="uid://cr1ixd8ryu4ed" path="res://UI/Camera/Camera.tscn" id="2_2bx26"]
@@ -16,7 +16,9 @@
 [ext_resource type="FontFile" uid="uid://0mrhwgks1wcx" path="res://Assets/Fonts/pixel-five-font/PixelFive-Regular.otf" id="12_vskfa"]
 [ext_resource type="Script" uid="uid://b2rj5sveogpbp" path="res://Entities/Player/slow_effect_circle.gd" id="13_e0lgo"]
 [ext_resource type="Shader" uid="uid://dhi8ncyaedkv2" path="res://effects/shaders/testripple.gdshader" id="14_64lkc"]
+[ext_resource type="AudioStream" uid="uid://bp3lf5tcnpbdb" path="res://Assets/Sound/SFX/skateboard_action/ridewall.wav" id="18_pjcup"]
 [ext_resource type="Script" uid="uid://cikmnya3eko1m" path="res://Entities/Player/rush_lines.gd" id="18_x14ep"]
+[ext_resource type="AudioStream" uid="uid://bpt3m3am63q67" path="res://Assets/Sound/SFX/riding.wav" id="19_0poeq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yupjb"]
 shader = ExtResource("3_njevv")
@@ -2069,6 +2071,14 @@ parameters/moving/blend_position = Vector2(0.986452, -0.00650764)
 
 [node name="GrappleTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="WallRidingSFX" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("18_pjcup")
+
+[node name="RidingSFX" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("19_0poeq")
 
 [connection signal="area_entered" from="obj_collider" to="." method="_on_obj_collider_area_entered"]
 [connection signal="area_exited" from="obj_collider" to="." method="_on_obj_collider_area_exited"]

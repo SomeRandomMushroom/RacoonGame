@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://xkhfgcjmoto1"
-path="res://.godot/imported/jump1.wav-617383745cd5c5f8f27e1fab80bf498b.sample"
+path="res://.godot/imported/jump1.wav-16a5e2235bc0661b5aba937caef785bd.sample"
 
 [deps]
 
-source_file="res://Assets/Sound/SFX/skateboard/jump1.wav"
-dest_files=["res://.godot/imported/jump1.wav-617383745cd5c5f8f27e1fab80bf498b.sample"]
+source_file="res://Assets/Sound/SFX/skateboard_action/jump1.wav"
+dest_files=["res://.godot/imported/jump1.wav-16a5e2235bc0661b5aba937caef785bd.sample"]
 
 [params]
 

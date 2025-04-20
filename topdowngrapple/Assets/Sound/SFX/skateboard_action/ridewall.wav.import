@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bp3lf5tcnpbdb"
-path="res://.godot/imported/ridewall.wav-db01af5b2893231fb38ae95cdf5e4e36.sample"
+path="res://.godot/imported/ridewall.wav-7c864a9d54acecced0f9c44703e97bae.sample"
 
 [deps]
 
-source_file="res://Assets/Sound/SFX/skateboard/ridewall.wav"
-dest_files=["res://.godot/imported/ridewall.wav-db01af5b2893231fb38ae95cdf5e4e36.sample"]
+source_file="res://Assets/Sound/SFX/skateboard_action/ridewall.wav"
+dest_files=["res://.godot/imported/ridewall.wav-7c864a9d54acecced0f9c44703e97bae.sample"]
 
 [params]
 
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=2

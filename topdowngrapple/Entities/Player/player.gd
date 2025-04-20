@@ -25,6 +25,8 @@ extends CharacterBody2D
 @onready var rippler=$UI/Rippler
 @onready var slow_effect_circle=$UI/SlowEffectCircle
 @onready var gpt=$GrappleTimer
+@onready var wall_riding_sfx=$WallRidingSFX
+@onready var riding_sfx=$RidingSFX
 @onready var tail=load('res://Entities/Player/tail.tscn')
 
 const speed_mod=.65
@@ -119,6 +121,12 @@ func _physics_process(og_delta: float) -> void:
 		States.MOVING:
 			if velocity:
 				animator.set('parameters/moving/blend_position', velocity.normalized())
+				if not (wall_riding or in_air):
+					if not riding_sfx.playing:
+						riding_sfx.play()
+			elif riding_sfx.playing:
+				riding_sfx.stop()
+				
 		States.GRAPPLING:
 			pass
 		States.FALLING:
@@ -226,10 +234,13 @@ func jumping(input):
 		velocity+=collision.get_normal()*WALLJUMPSPEED
 		if abs(input.angle()-velocity.angle())<60:
 			velocity+=input.normalized()*(WALLJUMPSPEED/2)
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERGRABWALL)
 
 	#inair
 	if in_air:
 		state=States.FALLING
+		if riding_sfx.playing:
+			riding_sfx.stop()
 		if z_pos>=0:
 			state=States.MOVING
 			if style_jump_cooldown==-1:
@@ -247,6 +258,7 @@ func jumping(input):
 				camera.shake(8, .3)
 			z_vel=0
 			state_machine.travel('moving')
+			AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERLAND1 if randi_range(1, 2)==2 else SoundEffect.SOUND_EFFECT_TYPE.PLAYERLAND2)
 		z_pos+=z_vel*delta/5
 		draw_layer.position.y=z_pos
 
@@ -273,6 +285,9 @@ func slide(input, prev_vel, collided):
 						else:
 							velocity.x*=-1
 					velocity=Vector2(velocity.y, velocity.x)*prev_vel.length()
+					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERGRABWALL)
+					riding_sfx.stop()
+					wall_riding_sfx.play()
 				elif not wall_riding:
 					wall_riding=true
 					if grappler!=null:
@@ -298,6 +313,10 @@ func slide(input, prev_vel, collided):
 						else:
 							ui.damage(1)
 							camera.shake(floor(prev_vel.length()/ATTACKINGSPEED)*3, .2)
+					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERGRABWALL)
+					riding_sfx.stop()
+					wall_riding_sfx.play()
+					
 		else:
 			wall_riding=false
 	else:
@@ -311,6 +330,7 @@ func speed_fx():
 		slidecast.enabled=true
 	else:
 		slidecast.enabled=false
+		wall_riding_sfx.playing=false
 	if velocity.length()<=MAXMOVESPEED*delta:
 		camera.const_shaking=false
 	if abs(MAXSPEED-velocity.length())<500 and !camera.const_shaking:
@@ -441,6 +461,7 @@ func style_jump(speed):
 		prev_vel_speed=velocity.length()
 		velocity=velocity.normalized()*(JUMPDAMPENSPEED*delta+velocity.length()*speed)
 		state_machine.travel('spin_basic')
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERJUMP1 if randi_range(1, 2)==2 else SoundEffect.SOUND_EFFECT_TYPE.PLAYERJUMP2)
 
 
 func air_grapple(target_obj):

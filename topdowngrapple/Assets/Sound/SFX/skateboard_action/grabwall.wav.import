@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dim5x6mfwj4ew"
-path="res://.godot/imported/grabwall.wav-82c1e76969bf8bd9c8651ed2934f7419.sample"
+path="res://.godot/imported/grabwall.wav-7e2c7dca9084f62153cb8bf1c4a4ef49.sample"
 
 [deps]
 
-source_file="res://Assets/Sound/SFX/skateboard/grabwall.wav"
-dest_files=["res://.godot/imported/grabwall.wav-82c1e76969bf8bd9c8651ed2934f7419.sample"]
+source_file="res://Assets/Sound/SFX/skateboard_action/grabwall.wav"
+dest_files=["res://.godot/imported/grabwall.wav-7e2c7dca9084f62153cb8bf1c4a4ef49.sample"]
 
 [params]
 

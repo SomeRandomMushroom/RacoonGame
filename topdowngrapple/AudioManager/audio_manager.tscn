@@ -1,6 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://7xvqspccc6sd"]
+[gd_scene load_steps=15 format=3 uid="uid://7xvqspccc6sd"]
 
 [ext_resource type="Script" uid="uid://cy3hvnc8fnrox" path="res://AudioManager/AudioManager.gd" id="1_eufxx"]
+[ext_resource type="Script" uid="uid://46kwh1bupvuh" path="res://AudioManager/SoundEffectSetting.gd" id="2_0452j"]
+[ext_resource type="AudioStream" uid="uid://xkhfgcjmoto1" path="res://Assets/Sound/SFX/skateboard_action/jump1.wav" id="3_ctu36"]
+[ext_resource type="AudioStream" uid="uid://e8l26wtxq0i0" path="res://Assets/Sound/SFX/skateboard_action/jump2.wav" id="4_vs8pd"]
+[ext_resource type="AudioStream" uid="uid://kxr5pt34qj7i" path="res://Assets/Sound/SFX/skateboard_action/land1.wav" id="5_dhqja"]
+[ext_resource type="AudioStream" uid="uid://d08jrw4kkdy1l" path="res://Assets/Sound/SFX/skateboard_action/land2.wav" id="6_vfc32"]
+[ext_resource type="AudioStream" uid="uid://bp3lf5tcnpbdb" path="res://Assets/Sound/SFX/skateboard_action/ridewall.wav" id="7_hxyai"]
+[ext_resource type="AudioStream" uid="uid://dim5x6mfwj4ew" path="res://Assets/Sound/SFX/skateboard_action/grabwall.wav" id="7_vs8pd"]
+
+[sub_resource type="Resource" id="Resource_yev23"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 0
+sound_effect = ExtResource("3_ctu36")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_iytsa"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 1
+sound_effect = ExtResource("4_vs8pd")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_bgh68"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 2
+sound_effect = ExtResource("5_dhqja")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_o4xyd"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 3
+sound_effect = ExtResource("6_vfc32")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_gp6yk"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 4
+sound_effect = ExtResource("7_vs8pd")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_130fh"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 5
+sound_effect = ExtResource("7_hxyai")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
 
 [node name="AudioManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_eufxx")
+sound_effects = Array[ExtResource("2_0452j")]([SubResource("Resource_yev23"), SubResource("Resource_iytsa"), SubResource("Resource_bgh68"), SubResource("Resource_o4xyd"), SubResource("Resource_gp6yk"), SubResource("Resource_130fh")])

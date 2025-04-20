@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d08jrw4kkdy1l"
-path="res://.godot/imported/land2.wav-23e6e8bf48178950d3bd54fe9caf80d6.sample"
+path="res://.godot/imported/land2.wav-df73e1bac71392b012201cc17202629f.sample"
 
 [deps]
 
-source_file="res://Assets/Sound/SFX/skateboard/land2.wav"
-dest_files=["res://.godot/imported/land2.wav-23e6e8bf48178950d3bd54fe9caf80d6.sample"]
+source_file="res://Assets/Sound/SFX/skateboard_action/land2.wav"
+dest_files=["res://.godot/imported/land2.wav-df73e1bac71392b012201cc17202629f.sample"]
 
 [params]
 
