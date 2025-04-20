@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global.gd"
+AudioManager="*res://AudioManager/audio_manager.tscn"
 
 [display]
 

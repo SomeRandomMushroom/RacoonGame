@@ -1,6 +1,7 @@
 extends Node2D
 @onready var clicker=$Clickbox
 @onready var aimer=$GrappleToAimer
+@onready var line=$Line2D
 const MAXCYOTEFRAMES=25
 var colliding_objects=[]
 var grapple_target=Vector2.ZERO
@@ -17,7 +18,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	position=get_global_mouse_position()
 	if Global.player:
-		aimer.target_position=(position-Global.player.position).normalized()*position.distance_to(Global.player.position)*3
+		aimer.target_position=(position-Global.player.position).normalized()*500
 		if position!=prev_position:
 			if aimer.is_colliding():
 				grapple_target=aimer.get_collision_point()
@@ -25,6 +26,11 @@ func _physics_process(_delta: float) -> void:
 				cyote_frames=MAXCYOTEFRAMES
 			elif cyote_frames<=0:
 				Global.player.aiming_to=position
+			
+			line.visible=true
+			line.position=Global.player.position-position
+			line.points[1]=Global.player.aiming_to-Global.player.position
+			#line.points[1]=grapple_target
 
 		if cyote_frames>0:
 			cyote_frames-=1

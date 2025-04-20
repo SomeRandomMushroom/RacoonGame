@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://ca0ltxiefn77p"]
+[gd_scene load_steps=92 format=3 uid="uid://ca0ltxiefn77p"]
 
 [ext_resource type="Script" uid="uid://bw7p3rcdru0ye" path="res://Entities/Player/player.gd" id="1_5ljvg"]
 [ext_resource type="PackedScene" uid="uid://cr1ixd8ryu4ed" path="res://UI/Camera/Camera.tscn" id="2_2bx26"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cg18po2rt30op" path="res://UI/Bars/bar.tscn" id="5_kjuru"]
 [ext_resource type="PackedScene" uid="uid://bxxmrk10irlfx" path="res://Entities/Player/player_sprites.tscn" id="7_6m5aj"]
 [ext_resource type="Texture2D" uid="uid://f38ftpldqp71" path="res://Assets/Entities/Player/rope.png" id="9_r8fok"]
+[ext_resource type="Texture2D" uid="uid://c10qrsheqgs1s" path="res://Entities/tools/speedometer.png" id="11_nhbkt"]
 [ext_resource type="Shader" uid="uid://d22fu1djcfilu" path="res://Entities/Player/fullscreen_effects.gdshader" id="12_6g3g1"]
+[ext_resource type="FontFile" uid="uid://0mrhwgks1wcx" path="res://Assets/Fonts/pixel-five-font/PixelFive-Regular.otf" id="12_vskfa"]
 [ext_resource type="Script" uid="uid://b2rj5sveogpbp" path="res://Entities/Player/slow_effect_circle.gd" id="13_e0lgo"]
 [ext_resource type="Shader" uid="uid://dhi8ncyaedkv2" path="res://effects/shaders/testripple.gdshader" id="14_64lkc"]
 [ext_resource type="Script" uid="uid://cikmnya3eko1m" path="res://Entities/Player/rush_lines.gd" id="18_x14ep"]
@@ -61,6 +63,10 @@ radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2tgu8"]
 radius = 14.0357
+
+[sub_resource type="FontVariation" id="FontVariation_pjcup"]
+base_font = ExtResource("12_vskfa")
+spacing_glyph = -1
 
 [sub_resource type="Curve" id="Curve_fbyyu"]
 _limits = [0.0, 6.0, 0.0, 1.0]
@@ -1908,12 +1914,19 @@ update_scale = false
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_c2snh")
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 32.0
-offset_bottom = 32.0
-color = Color(0, 0, 0, 1)
+[node name="Speedometer" type="Sprite2D" parent="UI"]
+position = Vector2(21, 13)
+texture = ExtResource("11_nhbkt")
+
+[node name="SpeedLabel" type="Label" parent="UI"]
+offset_left = 1.0
+offset_top = 12.0
+offset_right = 41.0
+offset_bottom = 35.0
+theme_override_fonts/font = SubResource("FontVariation_pjcup")
+theme_override_font_sizes/font_size = 5
+text = "16"
+horizontal_alignment = 1
 
 [node name="HealthBar" parent="UI" instance=ExtResource("5_kjuru")]
 offset_left = 40.0
@@ -2015,6 +2028,7 @@ scale_curve_y = SubResource("Curve_tq5xf")
 color = Color(0, 0, 0, 1)
 
 [node name="FullscreenFX" type="TextureRect" parent="UI"]
+visible = false
 material = SubResource("ShaderMaterial_f07nr")
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2031,6 +2045,7 @@ offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_yk8ig")
 
 [node name="Rippler" type="ColorRect" parent="UI"]
+visible = false
 material = SubResource("ShaderMaterial_kv13w")
 offset_right = 320.0
 offset_bottom = 168.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgbdkwb1nhex4"]
+[gd_scene load_steps=8 format=3 uid="uid://dgbdkwb1nhex4"]
 
 [ext_resource type="Script" uid="uid://df0r7tq8tn66o" path="res://Entities/tools/cursor/cursor.gd" id="1_wck0l"]
 [ext_resource type="Texture2D" uid="uid://u2gximtnriyo" path="res://Assets/Entities/Player/crosshair.png" id="2_gxtch"]
@@ -10,7 +10,13 @@ radius = 56.0803
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7kxo"]
 shader = ExtResource("3_iq0le")
-shader_parameter/scrolling_speed = 0.5
+shader_parameter/scrolling_speed = 1.0
+shader_parameter/transparency = 0.5
+
+[sub_resource type="Curve" id="Curve_iq0le"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1.21348), 0.0, 0.0, 0, 0, Vector2(1, 0.258427), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Cursor" type="Node2D"]
 z_index = 1
@@ -33,15 +39,18 @@ shape = SubResource("CircleShape2D_fibv8")
 debug_color = Color(0.7, 0.6874, 0.511, 0.419608)
 
 [node name="GrappleToAimer" type="RayCast2D" parent="."]
+target_position = Vector2(0, 500)
 collision_mask = 9
 collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_r7kxo")
-points = PackedVector2Array(-16, 72, 104, 72)
+points = PackedVector2Array(0, 0, 128, -40)
+width = 6.695
+width_curve = SubResource("Curve_iq0le")
 texture = ExtResource("4_6ox28")
-texture_mode = 1
+texture_mode = 2
 joint_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
