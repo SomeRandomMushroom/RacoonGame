@@ -4,7 +4,7 @@ func _ready():
 	if not_real:
 		var t=Timer.new()
 		add_child(t)
-		t.wait_time=.02
+		t.wait_time=.03
 		t.start()
 		t.connect('timeout', start_disapearing)
 func start_disapearing():

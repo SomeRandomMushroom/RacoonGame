@@ -181,7 +181,7 @@ func movement(input, og_delta):
 		line.points[-1]=gp-position
 		#If grappler has attatched
 		if grappler.attatched_type!=grappler.nothing:
-			if Input.is_action_just_pressed('grapple_pull'):
+			if Input.get_action_strength('grapple_pull'):
 				grappler.destroy()
 				if ui.energy>0:
 					velocity=position.direction_to(gp)*max(PULLSPEED, velocity.length()*1.1)

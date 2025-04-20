@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgbdkwb1nhex4"]
+[gd_scene load_steps=7 format=3 uid="uid://dgbdkwb1nhex4"]
 
 [ext_resource type="Script" uid="uid://df0r7tq8tn66o" path="res://Entities/tools/cursor/cursor.gd" id="1_wck0l"]
 [ext_resource type="Texture2D" uid="uid://u2gximtnriyo" path="res://Assets/Entities/Player/crosshair.png" id="2_gxtch"]
+[ext_resource type="Shader" uid="uid://c1ooxxb7ivrsu" path="res://Entities/tools/cursor/cursor.gdshader" id="3_iq0le"]
+[ext_resource type="Texture2D" uid="uid://2m1ev3lf0quw" path="res://Entities/tools/cursor/dashline.png" id="4_6ox28"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fibv8"]
 radius = 56.0803
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7kxo"]
+shader = ExtResource("3_iq0le")
+shader_parameter/scrolling_speed = 0.5
 
 [node name="Cursor" type="Node2D"]
 z_index = 1
@@ -29,5 +35,15 @@ debug_color = Color(0.7, 0.6874, 0.511, 0.419608)
 [node name="GrappleToAimer" type="RayCast2D" parent="."]
 collision_mask = 9
 collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_r7kxo")
+points = PackedVector2Array(-16, 72, 104, 72)
+texture = ExtResource("4_6ox28")
+texture_mode = 1
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [connection signal="area_shape_entered" from="Clickbox" to="." method="_on_clickbox_area_shape_entered"]
