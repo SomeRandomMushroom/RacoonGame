@@ -69,7 +69,6 @@ radius = 14.0357
 
 [sub_resource type="FontVariation" id="FontVariation_pjcup"]
 base_font = ExtResource("12_vskfa")
-spacing_glyph = -1
 
 [sub_resource type="Curve" id="Curve_fbyyu"]
 _limits = [0.0, 6.0, 0.0, 1.0]
@@ -1882,7 +1881,6 @@ texture = ExtResource("9_r8fok")
 texture_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_8vkar")
 
 [node name="obj_collider" type="Area2D" parent="."]
@@ -1928,7 +1926,7 @@ offset_right = 41.0
 offset_bottom = 35.0
 theme_override_fonts/font = SubResource("FontVariation_pjcup")
 theme_override_font_sizes/font_size = 5
-text = "16"
+text = "99.99"
 horizontal_alignment = 1
 
 [node name="HealthBar" parent="UI" instance=ExtResource("5_kjuru")]

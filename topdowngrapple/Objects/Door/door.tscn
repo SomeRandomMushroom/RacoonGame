@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdo4dbbxacuvs"]
+[gd_scene load_steps=6 format=3 uid="uid://cdo4dbbxacuvs"]
 
 [ext_resource type="Script" uid="uid://daey5h7lsjy63" path="res://Objects/Door/door.gd" id="1_7y0h0"]
 
@@ -7,6 +7,12 @@ size = Vector2(130, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yh2pu"]
 size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y0h0"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c24xa"]
+size = Vector2(40, 40)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_7y0h0")
@@ -64,3 +70,14 @@ offset_left = 128.0
 offset_top = -208.0
 offset_right = 168.0
 offset_bottom = -176.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["wall"]]
+collision_layer = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(148, -4)
+shape = SubResource("RectangleShape2D_7y0h0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-148, -4)
+shape = SubResource("RectangleShape2D_c24xa")

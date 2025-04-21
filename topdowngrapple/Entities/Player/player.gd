@@ -28,6 +28,7 @@ extends CharacterBody2D
 @onready var wall_riding_sfx=$WallRidingSFX
 @onready var riding_sfx=$RidingSFX
 @onready var wind_sfx=$WindSFX
+@onready var speed_label=$UI/SpeedLabel
 @onready var tail=load('res://Entities/Player/tail.tscn')
 
 const speed_mod=.65
@@ -313,7 +314,7 @@ func slide(input, prev_vel, collided):
 								velocity.y*=-1
 							velocity=Vector2(velocity.y, velocity.x)*prev_vel.length()
 						else:
-							ui.damage(1)
+							damage()
 							camera.shake(floor(prev_vel.length()/ATTACKINGSPEED)*3, .2)
 					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERGRABWALL)
 					riding_sfx.stop()
@@ -342,6 +343,7 @@ func speed_fx():
 		camera.const_shaking=false
 	wind_sfx.volume_db=min((velocity.length()/MAXSPEED)*43-40, 3)
 	riding_sfx.volume_db=min((velocity.length()/MAXSPEED)*18-10, 8)
+	speed_label.text=str(round(velocity.length()/MAXSPEED*950)/10.0)
 
 
 func tick_timers():
@@ -502,6 +504,11 @@ func squash_and_stretch():
 	squash.scale=lerp(squash.scale, ((max_squash-min_squash)*ratio+max_squash)*n, .2)
 	squash.skew=lerp(squash.skew, -velocity.angle(), .2)
 
+
+func damage(d=1):
+	ui.damage(d)
+
+
 ## Occurs when player dies. (aint no way)
 func die():
 	print('died')
@@ -550,7 +557,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group('enemy'):
-		ui.damage()
+		damage()
 
 
 func _on_grapple_timer_timeout() -> void:

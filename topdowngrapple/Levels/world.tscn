@@ -14,6 +14,21 @@
 [ext_resource type="PackedScene" uid="uid://bj07ioiyaewwk" path="res://Objects/switches/wheel_switch.tscn" id="11_v0p3n"]
 [ext_resource type="PackedScene" uid="uid://dd0e1mc6ew455" path="res://Objects/speed_boost.tscn" id="12_v0p3n"]
 
+[sub_resource type="Environment" id="Environment_3xwlv"]
+background_mode = 3
+ambient_light_source = 2
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.15
+glow_hdr_threshold = 0.12
+glow_hdr_scale = 1.59
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_6sct4"]
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_agk1c"]
 vertices = PackedVector2Array(2686, 1310, 3038, 1794, 1186, 1794, 126, 1790, 2338, 1310, 1218, 670, 1502, 670, 3646, 930, 3234, 930, 805.32, 891.758, 805.32, 682, 478, 286, 478, 386, 290, 386, -610, 350, 258, 286, 2594, 126, 2750, 126, 1502, 514, 1218, 514, 1086, 126, 2594, -30, 478, 574, 803.758, 651.633, 640.227, 678.883, 594, 678.883, 254, 654.906, 254, 609.094, 290, 574, 738, 126, 4386, -962, 4386, 2562, 3646, 1310, 2750, -30, 3614, 2370, 3038, 2014, 3234, 1310, -1922, -962, 1086, -286, 478, 98, 2686, 962, 1026, 1278, 1566, 1278, 126, 1538, 1026, 1026, -158, 1538, -386, 1278, -386, 770, 594, 893.32, 350, -162, 350, -350, 738, -286, -130, -162, 258, 98, -130, 62, 2338, 962, 1566, 1026, -610, 162, -382, 62, 803.758, 682, 803.758, 893.32, 803.758, 891.758, 3614, 2562, 1186, 2014, -162.68, 2370, -162.68, 2242, -164.242, 2242, -164.242, 2211.63, -158, 1790, -374, 2238.88, -374, 2370, -894, 2370, -894, 2562, -1922, 2562, -926, 1278, -382, -350, 219.25, 599.609, 200, 596.648, 180.75, 599.609, 146, 609.094, 219.25, 664.391, -327.773, 2238.88, 146, 654.906, -926, 770, -990, 350, -990, 162, 200, 667.352, 180.75, 664.391)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13, 14, 15), PackedInt32Array(11, 16, 17, 18, 19, 12), PackedInt32Array(16, 11, 20, 21), PackedInt32Array(22, 23, 24, 25, 26, 27, 28), PackedInt32Array(29, 20, 11), PackedInt32Array(30, 31, 32, 7), PackedInt32Array(30, 7, 17, 33), PackedInt32Array(17, 7, 6, 18), PackedInt32Array(32, 31, 34, 35, 1, 36), PackedInt32Array(37, 30, 33, 21, 38), PackedInt32Array(29, 11, 39), PackedInt32Array(8, 36, 1, 0, 40), PackedInt32Array(41, 42, 4, 3, 43), PackedInt32Array(44, 41, 43, 45, 46, 47, 48), PackedInt32Array(49, 50, 51, 29, 39), PackedInt32Array(52, 49, 39, 53, 54), PackedInt32Array(22, 12, 19, 5, 23), PackedInt32Array(55, 4, 42, 56), PackedInt32Array(54, 53, 15, 14, 57, 58), PackedInt32Array(10, 59, 23, 5), PackedInt32Array(56, 44, 60, 61, 9, 55), PackedInt32Array(9, 8, 40, 55), PackedInt32Array(31, 62, 34), PackedInt32Array(63, 35, 34, 64, 65), PackedInt32Array(63, 65, 66, 67, 68, 3, 2), PackedInt32Array(69, 70, 71), PackedInt32Array(71, 72, 73, 37, 74), PackedInt32Array(21, 20, 38), PackedInt32Array(37, 38, 51, 50), PackedInt32Array(37, 50, 75), PackedInt32Array(14, 13, 28, 27, 76), PackedInt32Array(14, 76, 77), PackedInt32Array(14, 77, 78), PackedInt32Array(14, 78, 79), PackedInt32Array(26, 25, 48, 80), PackedInt32Array(68, 67, 81, 69), PackedInt32Array(14, 79, 82, 47, 83, 84), PackedInt32Array(37, 75, 58, 57, 85), PackedInt32Array(46, 45, 68, 69, 71, 74), PackedInt32Array(83, 74, 37, 84), PackedInt32Array(86, 80, 48), PackedInt32Array(37, 85, 84), PackedInt32Array(48, 60, 44), PackedInt32Array(48, 47, 82, 87), PackedInt32Array(48, 87, 86)])
@@ -514,25 +529,14 @@ terrain_set_0/terrain_0/color = Color(0.25, 0.5, 0.316667, 1)
 navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_b35cj")
 
-[sub_resource type="Environment" id="Environment_3xwlv"]
-background_mode = 3
-ambient_light_source = 2
-glow_enabled = true
-glow_intensity = 0.4
-glow_bloom = 0.15
-glow_hdr_threshold = 0.12
-glow_hdr_scale = 1.59
-adjustment_enabled = true
-adjustment_brightness = 0.9
-adjustment_contrast = 1.1
-adjustment_saturation = 1.1
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_6sct4"]
-
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_1cigc")
 metadata/_edit_horizontal_guides_ = [80.0]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3xwlv")
+camera_attributes = SubResource("CameraAttributesPractical_6sct4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -5
@@ -585,10 +589,6 @@ position = Vector2(0, -400)
 position = Vector2(104, 384)
 
 [node name="Cursor" parent="." instance=ExtResource("3_nm3va")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3xwlv")
-camera_attributes = SubResource("CameraAttributesPractical_6sct4")
 
 [node name="Schnoz" parent="." instance=ExtResource("8_f35he")]
 position = Vector2(32, 536)
