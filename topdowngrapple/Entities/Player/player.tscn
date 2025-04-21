@@ -2406,7 +2406,6 @@ scale_curve_y = SubResource("Curve_tq5xf")
 color = Color(0, 0, 0, 1)
 
 [node name="FullscreenFX" type="TextureRect" parent="UI"]
-visible = false
 material = SubResource("ShaderMaterial_f07nr")
 offset_right = 40.0
 offset_bottom = 40.0
