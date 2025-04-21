@@ -16,7 +16,8 @@ func _physics_process(_delta: float) -> void:
 	if abs(rotational_vel)<.001:
 		rotational_vel=0
 	value=clampf(value, 0, max_value)
-	connected_obj.gradual_switch(value/max_value)
+	if connected_obj.owner!=get_tree():
+		connected_obj.gradual_switch(value/max_value)
 
 func set_rotational_force(f):
 	rotational_vel=f

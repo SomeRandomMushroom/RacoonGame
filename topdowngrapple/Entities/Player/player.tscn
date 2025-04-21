@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://ca0ltxiefn77p"]
+[gd_scene load_steps=112 format=3 uid="uid://ca0ltxiefn77p"]
 
 [ext_resource type="Script" uid="uid://bw7p3rcdru0ye" path="res://Entities/Player/player.gd" id="1_5ljvg"]
 [ext_resource type="PackedScene" uid="uid://cr1ixd8ryu4ed" path="res://UI/Camera/Camera.tscn" id="2_2bx26"]
@@ -335,7 +335,87 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_u86q5"]
+resource_name = "grapple_dlcc"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Grappling_DL_CC"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(2, -24)],
+"method": &"set_grapple_line_origin"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Visible/DrawLayer/TailPoint:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -22)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Visible/DrawLayer/Tail:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Visible/GrappleLine:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_nhbkt"]
@@ -495,7 +575,87 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_og23y"]
+resource_name = "grapple_lcc"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Grappling_L_CC"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(-2, -18)],
+"method": &"set_grapple_line_origin"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Visible/DrawLayer/TailPoint:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, -23)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Visible/DrawLayer/Tail:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Visible/GrappleLine:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_r8fok"]
@@ -655,7 +815,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [-1]
 }
 
 [sub_resource type="Animation" id="Animation_v7p16"]
@@ -857,7 +1017,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [Vector2(22, -34)],
+"args": [Vector2(14, -34)],
 "method": &"set_grapple_line_origin"
 }]
 }
@@ -895,7 +1055,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [-1]
 }
 
 [sub_resource type="Animation" id="Animation_ui1ln"]
@@ -1646,13 +1806,177 @@ tracks/3/keys = {
 "values": [0, 1, 0]
 }
 
+[sub_resource type="Animation" id="Animation_80ryp"]
+resource_name = "grapple_dcc"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Grappling_D_CC"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(14, -24)],
+"method": &"set_grapple_line_origin"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Visible/DrawLayer/TailPoint:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -22)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Visible/DrawLayer/Tail:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Visible/GrappleLine:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_v27kq"]
+resource_name = "grapple_drcc"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Grappling_DR_CC"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Visible/DrawLayer/Squash/PlayerSprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(14, -38)],
+"method": &"set_grapple_line_origin"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Visible/DrawLayer/TailPoint:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -22)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Visible/DrawLayer/Tail:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Visible/GrappleLine:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42t4h"]
 _data = {
 &"RESET": SubResource("Animation_tbbrh"),
 &"grapple_dc": SubResource("Animation_vskfa"),
+&"grapple_dcc": SubResource("Animation_80ryp"),
 &"grapple_dlc": SubResource("Animation_pjcup"),
+&"grapple_dlcc": SubResource("Animation_u86q5"),
 &"grapple_drc": SubResource("Animation_nhbkt"),
+&"grapple_drcc": SubResource("Animation_v27kq"),
 &"grapple_lc": SubResource("Animation_0poeq"),
+&"grapple_lcc": SubResource("Animation_og23y"),
 &"grapple_rc": SubResource("Animation_r8fok"),
 &"grapple_rcc": SubResource("Animation_avsg8"),
 &"grapple_uc": SubResource("Animation_v7p16"),
@@ -1690,7 +2014,7 @@ animation = &"grapple_drc"
 animation = &"grapple_dc"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_og23y"]
-animation = &"grapple_lc"
+animation = &"grapple_lcc"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u86q5"]
 animation = &"grapple_ulc"
@@ -1718,6 +2042,49 @@ blend_point_6/node = SubResource("AnimationNodeAnimation_80ryp")
 blend_point_6/pos = Vector2(-1, 0)
 blend_point_7/node = SubResource("AnimationNodeAnimation_v27kq")
 blend_point_7/pos = Vector2(-0.7, -0.7)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppdlg"]
+animation = &"grapple_rcc"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v7p16"]
+animation = &"grapple_urcc"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a8wow"]
+animation = &"grapple_ucc"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kx1i7"]
+animation = &"grapple_ulcc"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w51ui"]
+animation = &"grapple_rc"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_slvv8"]
+animation = &"grapple_dlcc"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l3oqu"]
+animation = &"grapple_dcc"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_53w1c"]
+animation = &"grapple_drcc"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_siu7b"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ppdlg")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_v7p16")
+blend_point_1/pos = Vector2(0.7, 0.7)
+blend_point_2/node = SubResource("AnimationNodeAnimation_a8wow")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_kx1i7")
+blend_point_3/pos = Vector2(0.7, -0.7)
+blend_point_4/node = SubResource("AnimationNodeAnimation_w51ui")
+blend_point_4/pos = Vector2(0, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_slvv8")
+blend_point_5/pos = Vector2(-0.7, -0.7)
+blend_point_6/node = SubResource("AnimationNodeAnimation_l3oqu")
+blend_point_6/pos = Vector2(-1, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_53w1c")
+blend_point_7/pos = Vector2(-0.7, 0.7)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e8lh8"]
@@ -1788,20 +2155,30 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r8fok"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c0fwy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fe32i"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rkx17"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gds62"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4lpae"]
 states/End/position = Vector2(1007, 100)
 states/Idle/node = SubResource("AnimationNodeAnimation_2l64e")
 states/Idle/position = Vector2(339, 136)
 states/Start/position = Vector2(192, 128)
 states/grapple_c/node = SubResource("AnimationNodeBlendSpace2D_kx1i7")
-states/grapple_c/position = Vector2(458, -29.2046)
+states/grapple_c/position = Vector2(517, -29.2046)
+states/grapple_cc/node = SubResource("AnimationNodeBlendSpace2D_siu7b")
+states/grapple_cc/position = Vector2(262, -29.2046)
 states/hurt/node = SubResource("AnimationNodeAnimation_e8lh8")
 states/hurt/position = Vector2(503, 152.459)
 states/moving/node = SubResource("AnimationNodeBlendSpace2D_56hpu")
 states/moving/position = Vector2(405, 64)
 states/spin_basic/node = SubResource("AnimationNodeAnimation_01k0h")
 states/spin_basic/position = Vector2(571, 73.6364)
-transitions = ["Idle", "moving", SubResource("AnimationNodeStateMachineTransition_o3p7r"), "moving", "Idle", SubResource("AnimationNodeStateMachineTransition_acivd"), "Start", "moving", SubResource("AnimationNodeStateMachineTransition_uh5c2"), "moving", "spin_basic", SubResource("AnimationNodeStateMachineTransition_ruwbx"), "spin_basic", "moving", SubResource("AnimationNodeStateMachineTransition_yfbw4"), "moving", "hurt", SubResource("AnimationNodeStateMachineTransition_1vq4i"), "hurt", "moving", SubResource("AnimationNodeStateMachineTransition_oxxdx"), "moving", "grapple_c", SubResource("AnimationNodeStateMachineTransition_w51ui"), "grapple_c", "moving", SubResource("AnimationNodeStateMachineTransition_r8fok")]
+transitions = ["Idle", "moving", SubResource("AnimationNodeStateMachineTransition_o3p7r"), "moving", "Idle", SubResource("AnimationNodeStateMachineTransition_acivd"), "Start", "moving", SubResource("AnimationNodeStateMachineTransition_uh5c2"), "moving", "spin_basic", SubResource("AnimationNodeStateMachineTransition_ruwbx"), "spin_basic", "moving", SubResource("AnimationNodeStateMachineTransition_yfbw4"), "moving", "hurt", SubResource("AnimationNodeStateMachineTransition_1vq4i"), "hurt", "moving", SubResource("AnimationNodeStateMachineTransition_oxxdx"), "moving", "grapple_c", SubResource("AnimationNodeStateMachineTransition_w51ui"), "grapple_c", "moving", SubResource("AnimationNodeStateMachineTransition_r8fok"), "grapple_cc", "moving", SubResource("AnimationNodeStateMachineTransition_c0fwy"), "moving", "grapple_cc", SubResource("AnimationNodeStateMachineTransition_fe32i"), "grapple_cc", "grapple_c", SubResource("AnimationNodeStateMachineTransition_rkx17"), "grapple_c", "grapple_cc", SubResource("AnimationNodeStateMachineTransition_gds62")]
 graph_offset = Vector2(-51, -66.6531)
 
 [node name="Player" type="CharacterBody2D"]
@@ -1812,8 +2189,8 @@ floor_constant_speed = true
 floor_block_on_wall = false
 floor_max_angle = 0.0
 script = ExtResource("1_5ljvg")
-metadata/_edit_horizontal_guides_ = [180.0, 166.0, -28.0]
-metadata/_edit_vertical_guides_ = [320.0, -16.0]
+metadata/_edit_horizontal_guides_ = [180.0, 166.0, -39.0]
+metadata/_edit_vertical_guides_ = [320.0, 14.0]
 
 [node name="Visible" type="Node2D" parent="."]
 
@@ -1926,7 +2303,7 @@ offset_right = 41.0
 offset_bottom = 35.0
 theme_override_fonts/font = SubResource("FontVariation_pjcup")
 theme_override_font_sizes/font_size = 5
-text = "99.99"
+text = "100.1"
 horizontal_alignment = 1
 
 [node name="HealthBar" parent="UI" instance=ExtResource("5_kjuru")]
@@ -2066,6 +2443,7 @@ root_node = NodePath("../AnimationPlayer")
 tree_root = SubResource("AnimationNodeStateMachine_4lpae")
 anim_player = NodePath("../AnimationPlayer")
 parameters/grapple_c/blend_position = Vector2(-0.00172114, -0.0309278)
+parameters/grapple_cc/blend_position = Vector2(0, 0)
 parameters/moving/blend_position = Vector2(0.986452, -0.00650764)
 
 [node name="GrappleTimer" type="Timer" parent="."]

@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 				cyote_frames=MAXCYOTEFRAMES
 			elif cyote_frames<=0:
 				Global.player.aiming_to=position
-			
+
 			line.visible=true
 			line.position=Global.player.position-position
 			line.points[1]=Global.player.aiming_to-Global.player.position

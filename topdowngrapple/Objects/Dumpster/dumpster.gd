@@ -6,6 +6,7 @@ var attatch_point=Vector2.ZERO
 var velocity=Vector2.ZERO
 var friction=1
 var grappled=false
+var next_to_wall=false
 
 func _physics_process(delta: float) -> void:
 	if grappled:
@@ -48,8 +49,16 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		print('hit')
 		var p=area.get_parent()
 		print(p.velocity, ' ', velocity)
-		if p.velocity.length()>velocity.length():
+		if p.velocity.length()<velocity.length():
 			p.set_deferred('velocity', p.velocity+velocity)
 			set_deferred('velocity', velocity*-.6)
-		else:
-			p.set_deferred('velocity', p.velocity+velocity)
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group('wall') and not body.is_in_group('object'):
+		next_to_wall=true
+		velocity*=-.6
+
+
+func _on_hurtbox_body_exited(body: Node2D) -> void:
+	if body.is_in_group('wall'):
+		next_to_wall=false

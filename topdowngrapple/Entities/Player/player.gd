@@ -129,7 +129,7 @@ func _physics_process(og_delta: float) -> void:
 						riding_sfx.play()
 			elif riding_sfx.playing:
 				riding_sfx.stop()
-				
+
 		States.GRAPPLING:
 			pass
 		States.FALLING:
@@ -196,7 +196,7 @@ func movement(input, og_delta):
 				grappler.destroy()
 				if ui.energy>0:
 					velocity=position.direction_to(gp)*max(PULLSPEED, velocity.length()*1.1)
-					ui.decrease_energy(4)
+					ui.decrease_energy(3)
 				else:
 					velocity=position.direction_to(gp)*max(PULLSPEED, velocity.length()*.5)
 				squash.burst_deform(velocity.normalized())
@@ -220,6 +220,8 @@ func movement(input, og_delta):
 					state_machine.travel('grapple_c')
 				else:
 					tangent.x*=-1
+					animator.set('parameters/grapple_cc/blend_position', gp.direction_to(position))
+					state_machine.travel('grapple_cc')
 				velocity=velocity.length()*(tangent+position.direction_to(gp)/25).normalized()
 				if grappler.attatched_type==grappler.entity and grappler.attatched_to.weak:
 					grappler.attatched_to.velocity+=-velocity*(delta/grappler.attatched_to.weight)
@@ -314,12 +316,11 @@ func slide(input, prev_vel, collided):
 								velocity.y*=-1
 							velocity=Vector2(velocity.y, velocity.x)*prev_vel.length()
 						else:
-							damage()
-							camera.shake(floor(prev_vel.length()/ATTACKINGSPEED)*3, .2)
+							damage(1, floor(prev_vel.length()/ATTACKINGSPEED)*3, .2)
 					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERGRABWALL)
 					riding_sfx.stop()
 					wall_riding_sfx.play()
-					
+
 		else:
 			wall_riding=false
 	else:
@@ -505,8 +506,10 @@ func squash_and_stretch():
 	squash.skew=lerp(squash.skew, -velocity.angle(), .2)
 
 
-func damage(d=1):
+func damage(d=1, shake_i=4.0, shake_d=.2):
+	velocity*=.4
 	ui.damage(d)
+	camera.shake(shake_i, shake_d)
 
 
 ## Occurs when player dies. (aint no way)

@@ -605,7 +605,7 @@ two_way = true
 position = Vector2(496, 344)
 
 [node name="Dumpster2" parent="." instance=ExtResource("6_ypq2k")]
-position = Vector2(1984, -104)
+position = Vector2(2144, 360)
 
 [node name="Dumpster" parent="." instance=ExtResource("6_ypq2k")]
-position = Vector2(1656, 288)
+position = Vector2(1680, 368)
