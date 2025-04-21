@@ -27,6 +27,7 @@ extends CharacterBody2D
 @onready var gpt=$GrappleTimer
 @onready var wall_riding_sfx=$WallRidingSFX
 @onready var riding_sfx=$RidingSFX
+@onready var wind_sfx=$WindSFX
 @onready var tail=load('res://Entities/Player/tail.tscn')
 
 const speed_mod=.65
@@ -96,6 +97,7 @@ func _ready() -> void:
 	ui.connect('death', die)
 	tail=tail.instantiate()
 	get_parent().connect('ready', set_tail)
+	wind_sfx.play()
 func set_tail():
 	add_sibling(tail)
 	tailpoint.remote_path=tail.begin.get_path()
@@ -338,6 +340,8 @@ func speed_fx():
 		camera.const_int=2
 	elif camera.const_shaking:
 		camera.const_shaking=false
+	wind_sfx.volume_db=min((velocity.length()/MAXSPEED)*43-40, 3)
+	riding_sfx.volume_db=min((velocity.length()/MAXSPEED)*18-10, 8)
 
 
 func tick_timers():
@@ -541,6 +545,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					camera.shake(16, .2)
 					area.get_parent().velocity=velocity
 					velocity=-velocity*.8
+					AudioManager.create_2d_audio_at_location(area.global_position, SoundEffect.SOUND_EFFECT_TYPE.GARBAGECRASH)
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:

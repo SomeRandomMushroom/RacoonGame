@@ -63,6 +63,7 @@ func _physics_process(delta: float) -> void:
 						attatched_to=raycast.get_collider().get_parent()
 						attatched_to.get_grappled()
 						attatched_to.connect('death', destroy)
+					AudioManager.create_2d_audio_at_location(raycast.get_collision_point(), SoundEffect.SOUND_EFFECT_TYPE.GRAPPLECLANK)
 		entity:
 			position=attatched_to.global_position
 		object:
