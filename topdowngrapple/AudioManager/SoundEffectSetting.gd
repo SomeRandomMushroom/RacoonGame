@@ -1,22 +1,22 @@
-class_name SoundEffect 
+class_name SoundEffect
 extends Resource
 ## Sound effect resource, used to configure unique sound effects for use with the AudioManager. Passed to [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()] to play sound effects.
 
 ## Stores the different types of sounds effects available to be played to distinguish them from another. Each new SoundEffect resource created should add to this enum, to allow them to be easily instantiated via [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()].
 enum SOUND_EFFECT_TYPE {
-	PLAYERJUMP1, 
-	PLAYERJUMP2, 
-	PLAYERLAND1, 
-	PLAYERLAND2, 
-	PLAYERGRABWALL, 
-	PLAYERRIDEWALL, 
-	PLAYERHURT, 
-	RACOONHURTNOISE1, 
-	RACOONHURTNOISE2, 
-	RACOONHURTNOISE3, 
-	GRAPPLECLANK, 
-	GARBAGECRASH, 
-	ENEMYHIT1, 
+	PLAYERJUMP1,
+	PLAYERJUMP2,
+	PLAYERLAND1,
+	PLAYERLAND2,
+	PLAYERGRABWALL,
+	PLAYERRIDEWALL,
+	PLAYERHURT,
+	RACOONHURTNOISE1,
+	RACOONHURTNOISE2,
+	RACOONHURTNOISE3,
+	GRAPPLECLANK,
+	GARBAGECRASH,
+	ENEMYHIT1,
 	ENEMYHIT2
 }
 
@@ -32,7 +32,7 @@ const RACOONHURTNOISES=[SOUND_EFFECT_TYPE.RACOONHURTNOISE1, SOUND_EFFECT_TYPE.RA
 var audio_count: int = 0 ## The instances of this [AudioStreamMP3] currently playing.
 
 
-## Takes [param amount] to change the [member audio_count]. 
+## Takes [param amount] to change the [member audio_count].
 func change_audio_count(amount: int) -> void:
 	audio_count = max(0, audio_count + amount)
 

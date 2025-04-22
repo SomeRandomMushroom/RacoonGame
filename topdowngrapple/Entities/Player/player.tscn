@@ -2014,7 +2014,7 @@ animation = &"grapple_drc"
 animation = &"grapple_dc"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_og23y"]
-animation = &"grapple_lcc"
+animation = &"grapple_lc"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u86q5"]
 animation = &"grapple_ulc"
@@ -2057,7 +2057,7 @@ animation = &"grapple_ucc"
 animation = &"grapple_ulcc"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w51ui"]
-animation = &"grapple_rc"
+animation = &"grapple_lcc"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_slvv8"]
 animation = &"grapple_dlcc"

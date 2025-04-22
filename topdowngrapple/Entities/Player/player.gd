@@ -506,10 +506,12 @@ func squash_and_stretch():
 	squash.skew=lerp(squash.skew, -velocity.angle(), .2)
 
 
-func damage(d=1, shake_i=4.0, shake_d=.2):
-	velocity*=.4
-	ui.damage(d)
+func damage(damage_amount=1, shake_i=4.0, shake_d=.2, vel_damp=.4):
+	velocity*=vel_damp
+	ui.damage(damage_amount)
 	camera.shake(shake_i, shake_d)
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERHURT)
+	AudioManager.create_audio(SoundEffect.RACOONHURTNOISES.pick_random())
 
 
 ## Occurs when player dies. (aint no way)
@@ -539,6 +541,7 @@ func _on_obj_collider_area_exited(area: Area2D) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group('enemy') and area.is_in_group('hitbox') and velocity.length()>=ATTACKINGSPEED:
 		var p=area.get_parent()
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ENEMYHIT1 if randi_range(1, 2)==2 else SoundEffect.SOUND_EFFECT_TYPE.ENEMYHIT2)
 		p.damage(floor(velocity.length()/ATTACKINGSPEED))
 		camera.shake(4, .2)
 		Global.timed_pause(.03)
@@ -560,7 +563,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group('enemy'):
-		damage()
+		print('PLAYER GOT DAMAGED HAHA')
+		if 'smimble' in area.get_parent().name:
+			velocity=velocity.length()*area.get_parent().position.direction_to(position)/2
+		damage(1, 4, .2, 1)
 
 
 func _on_grapple_timer_timeout() -> void:
