@@ -10,9 +10,17 @@ enum SOUND_EFFECT_TYPE {
 	PLAYERLAND2, 
 	PLAYERGRABWALL, 
 	PLAYERRIDEWALL, 
+	PLAYERHURT, 
+	RACOONHURTNOISE1, 
+	RACOONHURTNOISE2, 
+	RACOONHURTNOISE3, 
 	GRAPPLECLANK, 
-	GARBAGECRASH
+	GARBAGECRASH, 
+	ENEMYHIT1, 
+	ENEMYHIT2
 }
+
+const RACOONHURTNOISES=[SOUND_EFFECT_TYPE.RACOONHURTNOISE1, SOUND_EFFECT_TYPE.RACOONHURTNOISE2, SOUND_EFFECT_TYPE.RACOONHURTNOISE3]
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.
 @export var type: SOUND_EFFECT_TYPE ## The unique sound effect in the [enum SOUND_EFFECT_TYPE] to associate with this effect. Each SoundEffect resource should have it's own unique [enum SOUND_EFFECT_TYPE] setting.
