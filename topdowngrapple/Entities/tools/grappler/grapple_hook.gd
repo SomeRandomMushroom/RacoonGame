@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 					elif raycast.get_collider().is_in_group('enemy'):
 						attatched_type=entity
 						attatched_to=raycast.get_collider().get_parent()
+						print(attatched_to.name)
 						attatched_to.get_grappled()
 						attatched_to.connect('death', destroy)
 					AudioManager.create_2d_audio_at_location(raycast.get_collision_point(), SoundEffect.SOUND_EFFECT_TYPE.GRAPPLECLANK)

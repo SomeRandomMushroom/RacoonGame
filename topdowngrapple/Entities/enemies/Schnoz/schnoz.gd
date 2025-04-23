@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var health=$Visible/DrawLayer/HatHealthbar
 @onready var navigator=$NavigationAgent2D
 @onready var animator=$AnimationTree
-@export var weight=400
+@export var weight=200
 @export var MAXMOVESPEED=800
 @export var ACCELERATION=1.5
 
@@ -21,7 +21,7 @@ var mouse_hovering=false
 var launched=false
 var delta=0
 var current_target=position
-var aggrevated=true
+var aggrevated=false
 var z_pos=0
 var z_vel=0
 var in_air=false
@@ -56,7 +56,7 @@ func _physics_process(og_delta: float) -> void:
 				tangent.y*=-1
 			else:
 				tangent.x*=-1
-			velocity=velocity.length()*tangent
+			velocity=velocity.length()*(tangent+position.direction_to(gp)/30)
 	elif not (launched or grappled):
 		#do manual
 		if aggrevated:
@@ -97,6 +97,7 @@ func attack(direction: Vector2):
 
 
 func get_grappled():
+	print('oh no i got grappled')
 	draw_layer.shake(15, .5)
 	grappled=true
 
@@ -155,11 +156,11 @@ func _on_navigation_update_timeout() -> void:
 
 
 func _on_move_timer_timeout() -> void:
-	print(intention)
-	match intention:
-		APPROACH:
-			animate_lunge(position.direction_to(current_target))
-		RANDOM:
-			animate_lunge(Vector2(randf_range(-1, 1), randf_range(-1, 1)))
-		ATTACK:
-			attack(position.direction_to(Global.player.position))
+	if grappled==false and weak==true:
+		match intention:
+			APPROACH:
+				animate_lunge(position.direction_to(current_target))
+			RANDOM:
+				animate_lunge(Vector2(randf_range(-1, 1), randf_range(-1, 1)))
+			ATTACK:
+				attack(position.direction_to(Global.player.position))

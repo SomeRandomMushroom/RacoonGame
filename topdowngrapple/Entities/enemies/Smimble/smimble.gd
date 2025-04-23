@@ -25,7 +25,7 @@ var mouse_hovering=false
 var launched=false
 var delta=0
 var current_target=position
-var aggrevated=true
+var aggrevated=false
 var z_pos=0
 var z_vel=0
 var in_air=false
@@ -63,7 +63,7 @@ func _physics_process(og_delta: float) -> void:
 					tangent.y*=-1
 				else:
 					tangent.x*=-1
-				velocity=velocity.length()*tangent
+				velocity=velocity.length()*(tangent+position.direction_to(gp)/30)
 		elif not (launched or grappled):
 			#do manual
 			if aggrevated:

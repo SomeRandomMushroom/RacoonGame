@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cbghamy54h87t" path="res://Objects/spikes/spikes.gd" id="2_5osdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5osdg"]
-size = Vector2(32, 32)
+size = Vector2(1728, 416)
 
 [node name="Spikes" type="TextureRect"]
 offset_right = 16.0
