@@ -25,8 +25,8 @@ func open():
 	if is_instance_valid(t):
 		t.stop()
 	t=create_tween()
-	t.set_parallel().tween_property(self, 'door_l/position::x', open_pos_l, 1)
-	t.set_parallel().tween_property(self, 'door_r/position::x', open_pos_r, 1)
+	t.set_parallel().tween_property(door_l, 'position', door_l.position+Vector2(open_pos_l, 0), 1)
+	t.set_parallel().tween_property(door_r, 'position', door_r.position+Vector2(open_pos_r, 0), 1)
 	t.play()
 
 

@@ -4,6 +4,7 @@
 size = Vector2(128, 64)
 
 [node name="SpeedBoost" type="Area2D" groups=["object"]]
+z_index = -1
 collision_layer = 32
 collision_mask = 0
 metadata/type = "speed_boost"

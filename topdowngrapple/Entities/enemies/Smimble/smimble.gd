@@ -162,6 +162,7 @@ func release():
 
 
 func damage(amount=1):
+	AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.ENEMYHIT1 if randi_range(1, 2)==2 else SoundEffect.SOUND_EFFECT_TYPE.ENEMYHIT2)
 	print('enemy damaged: ', amount)
 	draw_layer.shake(25, .5)
 	var p=death_particle.instantiate()

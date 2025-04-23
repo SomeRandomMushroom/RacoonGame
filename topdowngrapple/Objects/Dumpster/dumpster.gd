@@ -52,11 +52,18 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if p.velocity.length()<velocity.length():
 			p.set_deferred('velocity', p.velocity+velocity)
 			set_deferred('velocity', velocity*-.6)
+			AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.GARBAGECRASH, .8)
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group('wall') and not body.is_in_group('object'):
-		next_to_wall=true
-		velocity*=-.6
+	if body.is_in_group('wall'):
+		if body.is_in_group('object'):
+			if body.get_meta('type')=='glass':
+				if is_fast():
+					body.destroy()
+		else:
+			next_to_wall=true
+			velocity*=-.6
+			AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.GARBAGECRASH, .6)
 
 
 func _on_hurtbox_body_exited(body: Node2D) -> void:

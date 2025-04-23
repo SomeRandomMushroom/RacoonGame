@@ -229,7 +229,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6iyx"]
-radius = 4.0
+radius = 8.0
 height = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4i5v4"]
@@ -614,7 +614,6 @@ radius = 80.0
 
 [node name="Smimble" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 0
 script = ExtResource("1_ye722")
 
 [node name="Visible" type="Node2D" parent="."]
@@ -641,6 +640,7 @@ path_desired_distance = 10.0
 target_desired_distance = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 56)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m6iyx")
 

@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 			raycast.target_position.x=velocity.length()*2*delta
 			position+=velocity*delta
 			rotation=velocity.angle()
-			if raycast.is_colliding():
+			if raycast.is_colliding()  and is_instance_valid(raycast.get_collider()):
 				if position.distance_to(position+velocity*delta)>=position.distance_to(raycast.get_collision_point()):
 					if raycast.get_collider().is_in_group('object'):
 						attatched_type=object
