@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://ca0ltxiefn77p"]
+[gd_scene load_steps=113 format=3 uid="uid://ca0ltxiefn77p"]
 
 [ext_resource type="Script" uid="uid://bw7p3rcdru0ye" path="res://Entities/Player/player.gd" id="1_5ljvg"]
 [ext_resource type="PackedScene" uid="uid://cr1ixd8ryu4ed" path="res://UI/Camera/Camera.tscn" id="2_2bx26"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cikmnya3eko1m" path="res://Entities/Player/rush_lines.gd" id="18_x14ep"]
 [ext_resource type="AudioStream" uid="uid://bpt3m3am63q67" path="res://Assets/Sound/SFX/riding.wav" id="19_0poeq"]
 [ext_resource type="AudioStream" uid="uid://d3spdjmxid6j4" path="res://Assets/Sound/SFX/wind.wav" id="20_ppdlg"]
+[ext_resource type="AudioStream" uid="uid://bvcl83e32vfky" path="res://Assets/Sound/Music/oreganomirage.ogg" id="21_v7p16"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yupjb"]
 shader = ExtResource("3_njevv")
@@ -2460,6 +2461,10 @@ stream = ExtResource("19_0poeq")
 process_mode = 3
 stream = ExtResource("20_ppdlg")
 volume_db = -40.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_v7p16")
+autoplay = true
 
 [connection signal="area_entered" from="obj_collider" to="." method="_on_obj_collider_area_entered"]
 [connection signal="area_exited" from="obj_collider" to="." method="_on_obj_collider_area_exited"]

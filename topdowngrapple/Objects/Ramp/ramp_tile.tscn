@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhdds2edtvd3a"]
+[gd_scene load_steps=8 format=3 uid="uid://bhdds2edtvd3a"]
 
 [ext_resource type="Script" uid="uid://bnv8fakmkg7jc" path="res://Objects/Ramp/ramp_tile.gd" id="1_5i8kc"]
+[ext_resource type="Texture2D" uid="uid://b4a00p5rkd0ew" path="res://Assets/Objects/Ramp.png" id="2_owtfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7o2s"]
 size = Vector2(48, 48)
@@ -21,14 +22,20 @@ size = Vector2(48, 1)
 [node name="RampTile" type="Node2D"]
 script = ExtResource("1_5i8kc")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(24, 16)
-polygon = PackedVector2Array(-24, -16, 24, -24, 24, 24, -24, 32)
+[node name="Ramp4" type="Sprite2D" parent="."]
+position = Vector2(24, 3)
+scale = Vector2(0.75, 0.375)
+texture = ExtResource("2_owtfq")
 
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-position = Vector2(24, 24)
-color = Color(0.59, 0.59, 0.59, 1)
-polygon = PackedVector2Array(-24, 24, 24, 24, 24, 16)
+[node name="Ramp3" type="Sprite2D" parent="."]
+position = Vector2(24, 19)
+scale = Vector2(0.75, 0.375)
+texture = ExtResource("2_owtfq")
+
+[node name="Ramp" type="Sprite2D" parent="."]
+position = Vector2(24, 36)
+scale = Vector2(0.75, 0.375)
+texture = ExtResource("2_owtfq")
 
 [node name="RampTile" type="Area2D" parent="."]
 collision_layer = 32

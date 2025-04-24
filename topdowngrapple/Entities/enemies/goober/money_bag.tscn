@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://i8x5jr8vlejm"]
+
+[ext_resource type="Script" uid="uid://dufwkrvi5o2x1" path="res://Entities/enemies/goober/money_bag.gd" id="1_4h8y7"]
+[ext_resource type="Texture2D" uid="uid://cckvfhdvxxlut" path="res://Assets/Entities/Enemies/Goober/Brown_Money_Bag_1.png" id="2_8xvlu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmr64"]
+radius = 24.0
+
+[node name="MoneyBag" type="Area2D"]
+script = ExtResource("1_4h8y7")
+
+[node name="BrownMoneyBag1" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_8xvlu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bmr64")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

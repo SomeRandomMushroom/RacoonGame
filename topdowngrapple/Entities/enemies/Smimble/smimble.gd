@@ -143,10 +143,14 @@ func teleport():
 	else:
 		position=Global.player.position+Global.player.velocity*.6
 	teleporting=false
+	AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.TELEPORT)
 	print("teleported to: "+str(position))
 
 
 func get_grappled():
+	state_machine.travel('Hurt')
+	animator.set('parameters/Hurt/blend_position', sign(Global.player.position.x-position.x))
+	animator.set('parameters/conditions/not_hurting', false)
 	draw_layer.shake(15, .5)
 	grappled=true
 
@@ -158,6 +162,8 @@ func release():
 		#weak=false
 		set_collision_mask_value(3, false)
 		print('launched')
+	else:
+		animator.set('parameters/conditions/not_hurting', true)
 	set_collision_mask_value(3, true)
 
 
@@ -184,6 +190,7 @@ func _on_hitbox_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_ind
 			damage(floor(velocity.length()/LAUNCHSPEED/50))
 			launched=false
 			set_collision_mask_value(3, true)
+			animator.set('parameters/conditions/not_hurting', true)
 	elif area.is_in_group('object'):
 		match area.get_meta('type'):
 			'dumpster':
@@ -198,6 +205,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			damage(floor(velocity.length()/LAUNCHSPEED/30))
 		launched=false
 		set_collision_mask_value(3, true)
+		animator.set('parameters/conditions/not_hurting', true)
 
 
 func _on_navigation_update_timeout() -> void:

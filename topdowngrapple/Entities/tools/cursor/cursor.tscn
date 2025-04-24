@@ -46,7 +46,7 @@ collide_with_areas = true
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_r7kxo")
-points = PackedVector2Array(0, 0, 128, -40)
+points = PackedVector2Array(0, 0, 0, 0)
 width = 6.695
 width_curve = SubResource("Curve_iq0le")
 texture = ExtResource("4_6ox28")

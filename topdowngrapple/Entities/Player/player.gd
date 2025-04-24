@@ -193,6 +193,7 @@ func movement(input, og_delta):
 		#If grappler has attatched
 		if grappler.attatched_type!=grappler.nothing:
 			if Input.get_action_strength('grapple_pull'):
+				AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.WOOSH)
 				grappler.destroy()
 				if ui.energy>0:
 					velocity=position.direction_to(gp)*max(PULLSPEED, velocity.length()*1.1)
@@ -225,7 +226,7 @@ func movement(input, og_delta):
 				velocity=velocity.length()*(tangent+position.direction_to(gp)/25).normalized()
 				if grappler.attatched_type==grappler.entity and grappler.attatched_to.weak:
 					grappler.attatched_to.velocity+=-velocity*(delta/grappler.attatched_to.weight)
-				elif grappler.attatched_type==grappler.object:
+				elif grappler.attatched_type==grappler.object and is_instance_valid(grappler.attatched_to):
 					match grappler.attatched_to.get_meta('type'):
 						'wheel_switch':
 							grappler.attatched_to.set_rotational_force(-angle_difference(gp.angle_to_point(position+velocity*og_delta), gp.angle_to_point(position)))
@@ -508,17 +509,19 @@ func squash_and_stretch():
 
 
 func damage(damage_amount=1, shake_i=4.0, shake_d=.2, vel_damp=.4):
-	velocity*=vel_damp
-	ui.damage(damage_amount)
-	camera.shake(shake_i, shake_d)
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERHURT)
-	AudioManager.create_audio(SoundEffect.RACOONHURTNOISES.pick_random())
+	if not in_air:
+		velocity*=vel_damp
+		ui.damage(damage_amount)
+		camera.shake(shake_i, shake_d)
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERHURT)
+		AudioManager.create_audio(SoundEffect.RACOONHURTNOISES.pick_random())
 
 
 ## Occurs when player dies. (aint no way)
 func die():
 	print('died')
 	death.emit()
+	get_tree().call_deferred('change_scene_to_file', "res://Levels/death_screen.tscn")
 
 
 func set_grapple_line_origin(p:Vector2):
@@ -529,6 +532,7 @@ func _on_obj_collider_area_entered(area: Area2D) -> void:
 	if area.is_in_group('object'):
 		match area.get_meta('type'):
 			"speed_boost":
+				AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.PLAYERBOOST)
 				camera.chain_zoom([[.24, .06], [.2, .5]])
 				if (velocity*2).length()<MAXBOOSTSPEED:
 					velocity*=2

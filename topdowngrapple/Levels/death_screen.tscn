@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3yov714cle4l"]
+
+[ext_resource type="PackedScene" uid="uid://dgbdkwb1nhex4" path="res://Entities/tools/cursor/cursor.tscn" id="1_132i1"]
+[ext_resource type="Script" uid="uid://b5uq012r5lug0" path="res://Levels/title_screen.gd" id="1_lmc4j"]
+[ext_resource type="Texture2D" uid="uid://dvdwfs2j4qrrn" path="res://Assets/Screens/Game Over.png" id="2_lmc4j"]
+
+[sub_resource type="FontVariation" id="FontVariation_fircs"]
+spacing_glyph = 1
+
+[node name="DeathScreen" type="Node2D"]
+script = ExtResource("1_lmc4j")
+
+[node name="GameOver" type="Sprite2D" parent="."]
+position = Vector2(-1.33335, -1.00001)
+scale = Vector2(0.834722, 0.831481)
+texture = ExtResource("2_lmc4j")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -800.0
+offset_top = -448.0
+offset_right = 800.0
+offset_bottom = 448.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -376.0
+offset_right = 288.0
+offset_bottom = -258.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_fircs")
+theme_override_font_sizes/font_size = 80
+text = "Retry?"
+
+[node name="Cursor" parent="." instance=ExtResource("1_132i1")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+
+[connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]

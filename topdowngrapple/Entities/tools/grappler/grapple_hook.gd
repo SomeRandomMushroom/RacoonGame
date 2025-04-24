@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 			if raycast.is_colliding()  and is_instance_valid(raycast.get_collider()):
 				if position.distance_to(position+velocity*delta)>=position.distance_to(raycast.get_collision_point()):
 					if raycast.get_collider().is_in_group('object'):
+						AudioManager.create_2d_audio_at_location(raycast.get_collision_point(), SoundEffect.SOUND_EFFECT_TYPE.GRAPPLECLANK)
 						attatched_type=object
 						if raycast.get_collider().get_meta('type')=='dumpster':
 							attatched_to=raycast.get_collider()
@@ -55,16 +56,18 @@ func _physics_process(delta: float) -> void:
 						else:
 							attatched_to=raycast.get_collider().get_parent()
 					elif raycast.get_collider().is_in_group('wall'):
+						AudioManager.create_2d_audio_at_location(raycast.get_collision_point(), SoundEffect.SOUND_EFFECT_TYPE.GRAPPLECLANK)
 						attatched_type=wall
 						attatched_to=raycast.get_collision_point()
 						position=attatched_to
 					elif raycast.get_collider().is_in_group('enemy'):
+						AudioManager.create_2d_audio_at_location(raycast.get_collision_point(), SoundEffect.SOUND_EFFECT_TYPE.GRAPPLECLANK)
 						attatched_type=entity
 						attatched_to=raycast.get_collider().get_parent()
 						print(attatched_to.name)
 						attatched_to.get_grappled()
 						attatched_to.connect('death', destroy)
-					AudioManager.create_2d_audio_at_location(raycast.get_collision_point(), SoundEffect.SOUND_EFFECT_TYPE.GRAPPLECLANK)
+					
 		entity:
 			position=attatched_to.global_position
 		object:
@@ -91,6 +94,11 @@ func destroy(vel=Vector2(randf_range(-5, 5), randf_range(-8, 2)), rot_vel=randf_
 	attatched_type=broken
 	var t=create_tween()
 	t.tween_property(self, 'modulate', Color(1, 1, 1, 0), time)
-	t.parallel().tween_property($Polygon2D, 'scale', Vector2.ZERO, time)
+	t.parallel().tween_property(self, 'scale', Vector2.ZERO, time)
 	t.tween_callback(queue_free)
 	t.play()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group('enemy') and area.is_in_group('hurtbox'):
+		destroy(area.position.direction_to(position)*2)

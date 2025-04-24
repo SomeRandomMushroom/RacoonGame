@@ -10,16 +10,11 @@ radius = 8.0
 z_index = 1
 z_as_relative = false
 collision_layer = 0
-collision_mask = 9
+collision_mask = 73
 script = ExtResource("1_d4fqj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gksue")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-10.7354, -10.7354, 21.4707, 0, -10.7354, 10.7354, 0, 0)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(300, 0)
@@ -31,3 +26,5 @@ collide_with_areas = true
 position = Vector2(-3, 1)
 scale = Vector2(2.875, 2.875)
 texture = ExtResource("2_vag23")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

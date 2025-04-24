@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="topdowngrapple"
-run/main_scene="res://Levels/world.tscn"
+run/main_scene="uid://kblrx731ra3f"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

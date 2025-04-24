@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://7xvqspccc6sd"]
+[gd_scene load_steps=45 format=3 uid="uid://7xvqspccc6sd"]
 
 [ext_resource type="Script" uid="uid://cy3hvnc8fnrox" path="res://AudioManager/AudioManager.gd" id="1_eufxx"]
 [ext_resource type="Script" uid="uid://46kwh1bupvuh" path="res://AudioManager/SoundEffectSetting.gd" id="2_0452j"]
@@ -16,6 +16,13 @@
 [ext_resource type="AudioStream" uid="uid://b51a5b25o7o1e" path="res://Assets/Sound/SFX/racoonhurt/racoonhurt3.wav" id="14_dvso0"]
 [ext_resource type="AudioStream" uid="uid://c457ql7glt0w7" path="res://Assets/Sound/SFX/hit/Hit.wav" id="15_o70es"]
 [ext_resource type="AudioStream" uid="uid://b2y0tsrlfyht7" path="res://Assets/Sound/SFX/hit/Hit2.wav" id="16_ut6p3"]
+[ext_resource type="AudioStream" uid="uid://ccrcqfaogmsqm" path="res://Assets/Sound/SFX/EnemyAttacks/otomatotripletshoot.wav" id="17_o70es"]
+[ext_resource type="AudioStream" uid="uid://dl1o2wl7o67t0" path="res://Assets/Sound/SFX/EnemyAttacks/otomatosingleshoot.wav" id="18_ut6p3"]
+[ext_resource type="AudioStream" uid="uid://c5s52a0b4bdlw" path="res://Assets/Sound/SFX/EnemyAttacks/teleport.wav" id="19_tic0y"]
+[ext_resource type="AudioStream" uid="uid://bcsciick5l2g" path="res://Assets/Sound/SFX/EnemyAttacks/coinbag.wav" id="20_hbx8q"]
+[ext_resource type="AudioStream" uid="uid://bw8y3ee8xrnt8" path="res://Assets/Sound/SFX/woosh.wav" id="21_ut6p3"]
+[ext_resource type="AudioStream" uid="uid://bw42tfd8p5sff" path="res://Assets/Sound/SFX/speedboostmkwii.wav" id="22_tic0y"]
+[ext_resource type="AudioStream" uid="uid://dxjy4wnxxkmyh" path="res://Assets/Sound/SFX/glassbreak.wav" id="23_hbx8q"]
 
 [sub_resource type="Resource" id="Resource_yev23"]
 script = ExtResource("2_0452j")
@@ -157,7 +164,77 @@ pitch_scale = 1.0
 pitch_randomness = 0.2
 metadata/_custom_type_script = "uid://46kwh1bupvuh"
 
+[sub_resource type="Resource" id="Resource_3jme2"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 14
+sound_effect = ExtResource("17_o70es")
+volume = 20.0
+pitch_scale = 1.0
+pitch_randomness = 0.5
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_fipc6"]
+script = ExtResource("2_0452j")
+limit = 10
+type = 15
+sound_effect = ExtResource("18_ut6p3")
+volume = 5.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_qo5ky"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 16
+sound_effect = ExtResource("19_tic0y")
+volume = 5.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_e75s3"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 17
+sound_effect = ExtResource("20_hbx8q")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_hnkr3"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 18
+sound_effect = ExtResource("21_ut6p3")
+volume = 1.0
+pitch_scale = 1.5
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_ds705"]
+script = ExtResource("2_0452j")
+limit = 3
+type = 19
+sound_effect = ExtResource("22_tic0y")
+volume = -10.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
+[sub_resource type="Resource" id="Resource_xghmx"]
+script = ExtResource("2_0452j")
+limit = 5
+type = 20
+sound_effect = ExtResource("23_hbx8q")
+volume = -10.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://46kwh1bupvuh"
+
 [node name="AudioManager" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_eufxx")
-sound_effects = Array[ExtResource("2_0452j")]([SubResource("Resource_yev23"), SubResource("Resource_iytsa"), SubResource("Resource_bgh68"), SubResource("Resource_o4xyd"), SubResource("Resource_gp6yk"), SubResource("Resource_130fh"), SubResource("Resource_vfc32"), SubResource("Resource_hxyai"), SubResource("Resource_tic0y"), SubResource("Resource_hbx8q"), SubResource("Resource_ay2pv"), SubResource("Resource_blf7f"), SubResource("Resource_vhf24"), SubResource("Resource_wfsl0")])
+sound_effects = Array[ExtResource("2_0452j")]([SubResource("Resource_yev23"), SubResource("Resource_iytsa"), SubResource("Resource_bgh68"), SubResource("Resource_o4xyd"), SubResource("Resource_gp6yk"), SubResource("Resource_130fh"), SubResource("Resource_vfc32"), SubResource("Resource_hxyai"), SubResource("Resource_tic0y"), SubResource("Resource_hbx8q"), SubResource("Resource_ay2pv"), SubResource("Resource_blf7f"), SubResource("Resource_vhf24"), SubResource("Resource_wfsl0"), SubResource("Resource_3jme2"), SubResource("Resource_fipc6"), SubResource("Resource_qo5ky"), SubResource("Resource_e75s3"), SubResource("Resource_hnkr3"), SubResource("Resource_ds705"), SubResource("Resource_xghmx")])
