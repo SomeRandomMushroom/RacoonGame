@@ -1964,6 +1964,7 @@ animation = &"Move_Right"
 [node name="HatHealthbar" parent="Visible/DrawLayer" instance=ExtResource("3_avhxa")]
 position = Vector2(9, -26)
 scale = Vector2(0.855, 0.855)
+MAXHEALTH = 10
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0

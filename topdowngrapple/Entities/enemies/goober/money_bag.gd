@@ -11,9 +11,9 @@ func collide():
 	var p
 	for x in [Vector2(-1, 1), Vector2(0, 1), Vector2(1, 1), Vector2(-1, 0), Vector2(1, 0), Vector2(-1, -1), Vector2(0, -1), Vector2(1, -1)]:
 		p=coin.instantiate()
-		add_sibling(p)
+		call_deferred('add_sibling', p)
 		p.position=position
-		p.velocity=x.normalized()*200
+		p.velocity=x.normalized()*500
 	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:

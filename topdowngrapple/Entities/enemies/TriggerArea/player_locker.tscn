@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdoayxcdy21o8"]
 
-[ext_resource type="Script" uid="uid://cqvlg1wrlk20c" path="res://Entities/enemies/TriggerArea/player_locker.gd" id="1_ddejs"]
+[ext_resource type="Script" path="res://Entities/enemies/TriggerArea/player_locker.gd" id="1_ddejs"]
 
 [node name="PlayerLocker" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_ddejs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -636,6 +636,7 @@ animation = &"Attack"
 
 [node name="HatHealthbar" parent="Visible/DrawLayer" instance=ExtResource("3_h77re")]
 position = Vector2(0, 10)
+MAXHEALTH = 10
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0

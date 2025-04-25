@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://diq2r621e68l8"]
+[gd_scene load_steps=4 format=3 uid="uid://diq2r621e68l8"]
 
-[ext_resource type="Script" uid="uid://c3djyvtcmqmi7" path="res://Levels/win_screen.gd" id="1_ug36h"]
+[ext_resource type="Script" path="res://Levels/win_screen.gd" id="1_ug36h"]
 [ext_resource type="Texture2D" uid="uid://cqlrrkteaernh" path="res://Assets/Screens/Win_Screen.png" id="2_ug36h"]
-[ext_resource type="PackedScene" uid="uid://dgbdkwb1nhex4" path="res://Entities/tools/cursor/cursor.tscn" id="3_uptqb"]
 
 [sub_resource type="FontVariation" id="FontVariation_fircs"]
 spacing_glyph = 1
@@ -30,17 +29,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -792.0
-offset_top = 328.0
-offset_right = -216.0
-offset_bottom = 446.0
+offset_left = -800.0
+offset_top = 336.0
+offset_right = -224.0
+offset_bottom = 454.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("FontVariation_fircs")
 theme_override_font_sizes/font_size = 80
 text = "Main Menu"
-
-[node name="Cursor" parent="." instance=ExtResource("3_uptqb")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)

@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var weight=200
 @export var MAXMOVESPEED=200
 @export var ACCELERATION=5
-@export var preferred_distance=250
+@export var preferred_distance=300
 @export var preferred_distance_left_bound=.9
 @export var preferred_distance_right_bound=1.1
 
@@ -79,7 +79,8 @@ func _physics_process(og_delta: float) -> void:
 					animator.set('parameters/attack/blend_position', sign(Global.player.position.x-position.x))
 				else:
 					velocity=velocity.move_toward(position.direction_to(current_target)*MAXMOVESPEED, ACCELERATION*delta)
-	velocity=velocity.move_toward(Vector2.ZERO, FRICTION*delta)
+	if not launched:
+		velocity=velocity.move_toward(Vector2.ZERO, FRICTION*delta)
 	move_and_slide()
 
 	if in_air:

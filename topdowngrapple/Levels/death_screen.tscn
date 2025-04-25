@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3yov714cle4l"]
 
 [ext_resource type="PackedScene" uid="uid://dgbdkwb1nhex4" path="res://Entities/tools/cursor/cursor.tscn" id="1_132i1"]
-[ext_resource type="Script" uid="uid://b5uq012r5lug0" path="res://Levels/title_screen.gd" id="1_lmc4j"]
+[ext_resource type="Script" path="res://Levels/title_screen.gd" id="1_lmc4j"]
 [ext_resource type="Texture2D" uid="uid://dvdwfs2j4qrrn" path="res://Assets/Screens/Game Over.png" id="2_lmc4j"]
 
 [sub_resource type="FontVariation" id="FontVariation_fircs"]
@@ -12,7 +12,7 @@ script = ExtResource("1_lmc4j")
 
 [node name="GameOver" type="Sprite2D" parent="."]
 position = Vector2(-1.33335, -1.00001)
-scale = Vector2(0.834722, 0.831481)
+scale = Vector2(0.849595, 0.846296)
 texture = ExtResource("2_lmc4j")
 
 [node name="Control" type="Control" parent="."]

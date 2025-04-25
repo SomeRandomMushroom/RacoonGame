@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 						print(attatched_to.name)
 						attatched_to.get_grappled()
 						attatched_to.connect('death', destroy)
-					
+
 		entity:
 			position=attatched_to.global_position
 		object:

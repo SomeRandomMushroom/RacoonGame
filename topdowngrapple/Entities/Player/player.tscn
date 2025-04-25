@@ -2184,7 +2184,7 @@ graph_offset = Vector2(-51, -66.6531)
 
 [node name="Player" type="CharacterBody2D"]
 visibility_layer = 2
-collision_layer = 3
+collision_layer = 2
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false

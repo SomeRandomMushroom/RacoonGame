@@ -2,14 +2,16 @@ extends CharacterBody2D
 
 @onready var death_particle=preload('res://effects/burst/default_burst_particle.tscn')
 @onready var money_bag=preload("res://Entities/enemies/goober/money_bag.tscn")
+@onready var shockwave=preload('res://Entities/enemies/goober/shockwave.tscn')
 @onready var vis=$Visible
 @onready var draw_layer=$Visible/DrawLayer
 @onready var health=$Visible/DrawLayer/HatHealthbar
 @onready var navigator=$NavigationAgent2D
-@export var weight=300
+@onready var animator=$AnimationTree
+@export var weight=100
 @export var MAXMOVESPEED=300
-@export var ACCELERATION=1.5
-@export var preferred_distance=200
+@export var ACCELERATION=5
+@export var preferred_distance=300
 @export var preferred_distance_left_bound=.9
 @export var preferred_distance_right_bound=1.1
 
@@ -23,12 +25,14 @@ var mouse_hovering=false
 var launched=false
 var delta=0
 var current_target=position
-var aggrevated=true
+var aggrevated=false
 var z_pos=0
 var z_vel=0
 var in_air=false
+var attacking=false
 var can_attack=true
 var projectile_speed=400
+var state_machine=null
 
 signal death
 
@@ -36,6 +40,7 @@ signal death
 func _ready() -> void:
 	navigator.set_max_speed(MAXMOVESPEED*Global.DELTA_MODIFIER)
 	health.connect('empty', die)
+	state_machine=animator.get('parameters/playback')
 
 
 func _physics_process(og_delta: float) -> void:
@@ -52,11 +57,21 @@ func _physics_process(og_delta: float) -> void:
 			else:
 				tangent.x*=-1
 			velocity=velocity.length()*(tangent+position.direction_to(gp)/30)
-	elif not (launched or grappled):
+	elif not (launched or grappled or attacking):
 		#do manual
 		if aggrevated:
 			var dtot=navigator.distance_to_target()
-			if dtot<preferred_distance*preferred_distance_right_bound:
+			if dtot<preferred_distance*1.5 and not attacking and can_attack:
+				attacking=true
+				can_attack=false
+				match randi_range(1, 2):
+					1:
+						state_machine.travel('shoot')
+						animator.set('parameters/shoot/blend_position', sign(Global.player.position.x-position.x))
+					2:
+						state_machine.travel('stomp')
+			elif dtot<preferred_distance*preferred_distance_right_bound:
+				animator.set('parameters/moving/blend_position', sign(Global.player.position.x-position.x))
 				if dtot>preferred_distance*preferred_distance_left_bound:
 					#perfect distance, friction
 					velocity=velocity.move_toward(Vector2.ZERO, FRICTION*delta)
@@ -64,11 +79,12 @@ func _physics_process(og_delta: float) -> void:
 					#Too close
 					velocity=velocity.move_toward(-position.direction_to(Global.player.position)*MAXMOVESPEED, ACCELERATION*delta)
 			else:
+				animator.set('parameters/moving/blend_position', sign(Global.player.position.x-position.x))
 				#navigate to player
 				velocity=velocity.move_toward(position.direction_to(current_target)*MAXMOVESPEED, ACCELERATION*delta)
-		else:
-			#friction
-			velocity=velocity.move_toward(Vector2.ZERO, FRICTION*delta)
+	#friction
+	if not launched:
+		velocity=velocity.move_toward(Vector2.ZERO, FRICTION*delta)
 	move_and_slide()
 
 
@@ -82,12 +98,26 @@ func _physics_process(og_delta: float) -> void:
 		z_vel+=GRAVITY*delta
 
 
+func stop_attack():
+	attacking=false
+	$MoveCooldown.start()
+	state_machine.travel('moving')
+	print('stopped')
+
+
 func shoot_money():
 	AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.WOOSH)
 	var p=money_bag.instantiate()
 	add_sibling(p)
 	p.position=position
 	p.velocity=position.direction_to(Global.player.position)*projectile_speed
+
+
+func create_shockwave():
+	AudioManager.create_2d_audio_at_location(position, SoundEffect.SOUND_EFFECT_TYPE.ENEMYHIT2)
+	var p=shockwave.instantiate()
+	add_sibling(p)
+	p.position=position
 
 
 func get_grappled():
@@ -111,7 +141,6 @@ func damage(amount=1):
 	var p=death_particle.instantiate()
 	add_sibling(p)
 	p.position=position
-	p.color=$Visible/DrawLayer/ColorRect.color
 	health.current_health-=max(1, amount)
 	health.update()
 

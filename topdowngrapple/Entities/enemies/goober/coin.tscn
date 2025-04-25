@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://066mifm1186e"]
 
-[ext_resource type="Script" uid="uid://co4ero2bmbln5" path="res://coin.gd" id="1_4x75t"]
+[ext_resource type="Script" path="res://coin.gd" id="1_4x75t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs00u"]
 size = Vector2(16, 16)
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["enemy", "hurtbox"]]
+collision_layer = 64
+collision_mask = 3
 script = ExtResource("1_4x75t")
 
 [node name="ColorRect" type="ColorRect" parent="."]

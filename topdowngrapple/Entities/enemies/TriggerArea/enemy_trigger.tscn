@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bci6eufcra53e" path="res://Entities/enemies/TriggerArea/enemy_trigger.gd" id="1_248ye"]
 
 [node name="EnemyTrigger" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_248ye")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

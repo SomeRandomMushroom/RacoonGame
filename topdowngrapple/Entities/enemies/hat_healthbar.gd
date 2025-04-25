@@ -1,17 +1,19 @@
 extends Node2D
 
-@export var MAXHEALTH=10.0
+@export var MAXHEALTH:int
 
 @onready var break_particle=preload('res://effects/burst/hat_break.tscn')
 @onready var hatheight=$Height
 
-var current_health=MAXHEALTH
+var current_health=5
 var previous_health=current_health
 var toggle=false
 
 signal empty
 
 func _ready() -> void:
+	current_health=MAXHEALTH
+	print(current_health)
 	update()
 
 func update():

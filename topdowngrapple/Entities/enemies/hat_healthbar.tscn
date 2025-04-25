@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chcqgu1uyictc"]
 
-[ext_resource type="Script" path="res://Entities/enemies/hat_healthbar.gd" id="1_tbpns"]
+[ext_resource type="Script" uid="uid://djshruou2gfw3" path="res://Entities/enemies/hat_healthbar.gd" id="1_tbpns"]
 
 [node name="HatHealthbar" type="Node2D"]
 script = ExtResource("1_tbpns")

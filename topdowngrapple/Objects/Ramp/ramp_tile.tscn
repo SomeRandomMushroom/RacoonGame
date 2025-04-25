@@ -39,6 +39,7 @@ texture = ExtResource("2_owtfq")
 
 [node name="RampTile" type="Area2D" parent="."]
 collision_layer = 32
+collision_mask = 3
 metadata/type = "ramp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RampTile"]
@@ -49,6 +50,7 @@ debug_color = Color(0.766939, 0.432482, 0.316723, 0.42)
 [node name="Enter Point" type="Area2D" parent="."]
 position = Vector2(24.4, 16.4)
 collision_layer = 32
+collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Enter Point"]
 shape = SubResource("SegmentShape2D_8pj6w")

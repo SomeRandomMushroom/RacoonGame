@@ -27,6 +27,7 @@ script = ExtResource("1_j0mn5")
 
 [node name="HatHealthbar" parent="Visible/DrawLayer" instance=ExtResource("3_u1ehj")]
 position = Vector2(0, -32)
+MAXHEALTH = 10
 
 [node name="ColorRect" type="ColorRect" parent="Visible/DrawLayer"]
 offset_left = -24.0
